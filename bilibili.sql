@@ -1,7 +1,7 @@
 SET NAMES utf8;
-DROP DATABASE IF EXISTS illustration;
-CREATE DATABASE illustration CHARSET=utf8;
-USE illustration;
+DROP DATABASE IF EXISTS bilibili;
+CREATE DATABASE bilibili CHARSET=utf8;
+USE bilibili;
 CREATE TABLE testTable(
     one INT PRIMARY KEY AUTO_INCREMENT,
     two VARCHAR(16),
