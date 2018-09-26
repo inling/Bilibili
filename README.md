@@ -1,4 +1,4 @@
-# bilibli
+# Bilibili
 
 ## Project setup
 ```
