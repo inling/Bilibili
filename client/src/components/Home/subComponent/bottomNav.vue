@@ -1,5 +1,5 @@
 <template>
-    
+    <div class="bottomNav"></div>
 </template>
 <script>
     export default({
@@ -14,10 +14,8 @@
         created(){
 
         },
-        props:['bgImage']
     })
 </script>
 <style scoped>
 
 </style>
-

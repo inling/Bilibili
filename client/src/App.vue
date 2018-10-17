@@ -15,6 +15,9 @@ a{
   color:#222;
   cursor: pointer;
 }
+ul{
+  list-style: none;
+}
 .bili-icon{
   display: inline-block;
   background-image: url('/img/icons.png');
