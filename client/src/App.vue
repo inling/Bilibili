@@ -10,6 +10,9 @@
   margin:0;
   padding:0;
 }
+body{
+  width: 100%;
+}
 a{
   text-decoration: none;
   color:#222;

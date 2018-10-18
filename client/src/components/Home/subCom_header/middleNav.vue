@@ -1,6 +1,6 @@
 <template>
     <div class="middleNav" :style="bgImage">
-        <div class="head-content">
+        <div class="head-content bili-wrapper">
             <div class="search">
                 <form class="searchform">
                     <input type="text" class="search-keyword" :placeholder="placeholder">
@@ -31,6 +31,11 @@
     })
 </script>
 <style scoped>
+    @media screen and (max-width:1400px){
+        .middleNav .head-content.bili-wrapper {
+            width: 980px;
+        }
+    }
     .middleNav{
         position: relative;
         height:170px;
@@ -62,6 +67,9 @@
         border-radius:4px;
         transition: background-color .2s;
     }
+    .middleNav .head-content .search .searchform:hover{
+        background-color: #fff;
+    }      
     .middleNav .head-content .search .searchform .search-keyword{
         float: left;
         width:224px;
@@ -89,16 +97,26 @@
         background: url(/img/icons.png) -653px -720px;
         border: 0;
     }
+    .middleNav .head-content .search .searchform .search-submit:hover{
+        background-position: -718px -720px;        
+    }
+    .middleNav .head-content .search .searchform .search-submit:focus{
+        outline: none;  
+    }
     .middleNav .head-content .search .link-ranking{
         position: absolute;
         left:2px;
         top:2px;
         height:32px;
         line-height: 32px;
+            background-color: #fff;
         background-color: hsla(0,0%,100%,.88);
         border-radius: 4px;
         width: 68px;
         transition: background-color .2s;
+    }
+    .middleNav .head-content .search .link-ranking:hover{
+        background-color: #fff
     }
     .middleNav .head-content .search .link-ranking span{
         padding-left: 26px;

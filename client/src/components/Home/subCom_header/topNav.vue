@@ -2,7 +2,7 @@
     <div class="topNav">
         <div class="menuBg"  :style="bgImage"></div>
         <div class="menuMask"></div>
-        <div class="menuWrapper">
+        <div class="menuWrapper bili-wrapper">
             <div class="menu-con1">
                 <ul>
                     <li class="home headli" title="主站">
@@ -85,6 +85,11 @@
 </script>
 
 <style scoped>
+    @media screen and (max-width:1400px){
+        .topNav .menuWrapper.bili-wrapper {
+            width: 980px;
+        }
+    }
     .topNav{
         position: relative;
         z-index:200;
@@ -240,7 +245,7 @@
         vertical-align: middle;
     }
     .topNav .menuWrapper .menu-con3 .login li a .num{
-        height: 12px;
+        height: 14px;
         line-height: 12px;
         color: #fff;
         background-color: #f25d8e;
@@ -250,7 +255,7 @@
         font-size: 12px;
         top: 1px;
         right: -4px;
-        min-width: 16px;
+        min-width: 20px;
         z-index: 30;
         text-align: center;
     }

@@ -7,9 +7,9 @@
 </template>
 
 <script>
-    import topNav from '@/components/Home/subComponent/topNav.vue';
-    import middleNav from '@/components/Home/subComponent/middleNav.vue';
-    import bottomNav from '@/components/Home/subComponent/bottomNav.vue';
+    import topNav from '@/components/Home/subCom_header/topNav.vue';
+    import middleNav from '@/components/Home/subCom_header/middleNav.vue';
+    import bottomNav from '@/components/Home/subCom_header/bottomNav.vue';
     export default({
         data(){
             return {
