@@ -35,7 +35,6 @@
 </script>
 
 <style scoped>
-/*导航栏ul样式*/
     .ul3-style{
         position: relative;
         z-index: 200;
