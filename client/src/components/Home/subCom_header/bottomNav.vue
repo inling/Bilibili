@@ -1,37 +1,17 @@
 <template>
     <div class="bottomNav bili-wrapper">
-        <div class="primary-menu">
-            <ul class="nav-bar">
-                <!--首页-->
-                <home-box></home-box>
-                <!--动画、番剧、国创。。。。。放映厅-->
-                <nav-item1 v-for="(item,i) in navlists" :key="i" :navName="item.navName" :numWrap="item.numWrap"></nav-item1>
-                <!--专栏-->
-                <li class="side-nav">
-                    <router-link to="#" class="side-link">
-                        <i class="zhuanlan"></i>
-                        <span>专栏</span>
-                    </router-link>
-                </li>
-                <!--广场-->
-                <li class="side-nav">
-                    <router-link to="#" class="side-link"></router-link>
-                </li>
-                <!--直播-->
-                <li class="side-nav">
-                    <router-link to="#" class="side-link"></router-link>
-                </li>
-                <!--小黑屋-->
-                <li class="side-nav">
-                    <router-link to="#"></router-link>
-                </li>
-            </ul>
+        <div class="primary-menu border-b">
+            <ul3-style :navlists="navlists" :sideNavlists="sideNavlists"></ul3-style>    
+            <div class="gif-menu nav-gif">
+                <router-link to="#" class="random-p">
+                    <img :src="rGif" alt="">
+                </router-link>
+            </div>
         </div>
     </div>
 </template>
 <script>
-    import homeBox from "@/components/Home/subCom_header/navCom/homeBox.vue";
-    import navItem1 from "@/components/Home/subCom_header/navCom/navItem1.vue";
+    import ul3Style from "@/components/Home/subCom_header/ul3-style/ul3-style.vue"
     export default({
         data(){
             return {
@@ -50,18 +30,34 @@
                     {navName:'娱乐',numWrap:'999+'},
                     {navName:'影视',numWrap:'999+'},
                     {navName:'放映厅',numWrap:'320'}
+                ],
+                sideNavlists:[
+                    {iname:'zhuanlan',sname:'专栏'},
+                    {iname:'square',sname:'广场'},
+                    {iname:'live',sname:'直播'},
+                    {iname:'blackroom',sname:'小黑屋'}
+                ],
+                rGif:'img/header/random-1.gif',
+                rGiflist:[
+                    'img/header/random-1.gif',
+                    'img/header/random-2.gif',
+                    'img/header/random-3.gif',
+                    'img/header/random-4.gif',
+                    'img/header/random-5.gif'
                 ]
             }
         },
         methods:{
-
+            setRandomImage(){
+                var range=Math.floor(Math.random()*5);
+                this.rGif=this.rGiflist[range];
+            }
         },
         created(){
-
+            this.setRandomImage();
         },
         components:{
-            homeBox,
-            navItem1
+            ul3Style
         }
     })
 </script>
@@ -87,31 +83,28 @@
         padding:8px 0 0;
         border-bottom: 1px solid #fff;
     }
-    /*导航栏ul样式*/
-    .primary-menu .nav-bar{
-        position: relative;
-        z-index: 200;
-        height: 42px;
-        color: #222;
-    }   
-    @media screen and (min-width: 1400px){
-        .bottomNav .primary-menu .nav-bar li.side-nav {
-            margin: 0 6px;
-        }
+    .bottomNav .nav-gif{
+        position: absolute;
+        right: 0;
+        top: 0;
+        height: 50px;
+        padding: 4px 0;
     }
-    .bottomNav .side-nav{
-        width: 40px;
-        text-align: center;
-        float: left;
-        display: block;
-        position: relative;
-    }
-
-    .bottomNav .side-nav .side-link{
+    .bottomNav .nav-gif .random-p{
+        width: 69px;
+        height: 40px;
         display: inline-block;
-        position: relative;
+        vertical-align: top;
+        margin: 3px 0;
         overflow: hidden;
     }
-
-        
+    .bottomNav .nav-gif .random-p img{
+        width: 100%;
+        height: 100%;
+        margin: 0 auto;
+        border-radius: 3px;
+    }
+    .primary-menu.border-b {
+        border-bottom: 1px solid #e5e9ef;
+    }
 </style>

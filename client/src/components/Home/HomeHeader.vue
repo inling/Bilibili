@@ -16,11 +16,10 @@
                 islogin:true,
                 user:{
                     iface:"img/header/noface.gif",
-                    num:50
                 },          
                 bgImages:[
                     {backgroundImage:`url(/img/header/h-1.png)`},
-                    {backgroundImage:`url(/img/header/h-2.png)`},
+                    {backgroundImage:`url(/img/header/h-7.png)`},
                     {backgroundImage:`url(/img/header/h-3.png)`},
                     {backgroundImage:`url(/img/header/h-4.png)`},
                     {backgroundImage:`url(/img/header/h-5.png)`},
@@ -28,7 +27,7 @@
                 ],
                 bgImageIcon:[
                     {backgroundImage:`url(/img/header/h-1-icon.png)`},
-                    {backgroundImage:`url(/img/header/h-2-icon.png)`},
+                    {backgroundImage:`url(/img/header/h-7-icon.png)`},
                     {backgroundImage:`url(/img/header/h-3-icon.png)`},
                     {backgroundImage:`url(/img/header/h-4-icon.png)`},
                     {backgroundImage:`url(/img/header/h-5-icon.png)`},
