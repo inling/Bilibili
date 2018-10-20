@@ -1,28 +1,38 @@
 <template>
-    <li class="nav-item1">
+    <li class="nav-item1"  @mouseover="setShowIn()" @mouseout="setShowOut()">
         <router-link to="#">
             <div class="num-wrap">
                 <span>{{numWrap}}</span>
             </div>
             <div class="nav-name">{{navName}}</div>
         </router-link>
+        <ul4-style :subLis="subLis" v-show="isShow"></ul4-style>
     </li>
 </template>
 
 <script>
+    import ul4Style from "@/components/Home/subCom_header/ul4-style/ul4-style.vue"
     export default({
         data(){
             return {
-
+                isShow:false
             }
         },
         methods:{
-
+            setShowIn(){
+                this.isShow=true;
+            },
+            setShowOut(){
+                this.isShow=false;
+            }
         },
         created() {
             
         },
-        props:['numWrap','navName']      
+        components:{
+            ul4Style
+        },
+        props:['numWrap','navName','subLis']      
     })
 </script>
 
