@@ -1,7 +1,7 @@
 <template>
     <ul class="ul1-style">
         <ul1-li-style1></ul1-li-style1>
-        <ul1-li-style2 v-for="(item,i) in liContent" :key="i" :liTitle="item.liTitle" :liText="item.liText"></ul1-li-style2>
+        <ul1-li-style2 v-for="(item,i) in liContent" :key="i" :liTitle="item.liTitle" :liText="item.liText" :downDiv="item.downDiv"></ul1-li-style2>
         <ul1-li-style3></ul1-li-style3>
     </ul>
 </template>

@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Home from './views/Home.vue'
-import gameCenter from './components/Home/subCom_header/gameCenter/gameCenter.vue'
+import gameCenter from './components/Home/subCom_header/live/live.vue'
 Vue.use(Router)
 
 export default new Router({

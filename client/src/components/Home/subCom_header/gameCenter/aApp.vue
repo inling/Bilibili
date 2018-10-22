@@ -7,7 +7,7 @@
 <script>
     export default({
         data(){
-
+            return {}
         },
         methods:{
 
@@ -23,15 +23,20 @@
 </script>
 <style>
     .aApp{
-        width: 64px;
-        height:104px;
+        width: 88px;
+        height:110px;
         padding: 6px 12px 0;
         display: block;
         float: left;
-        overflow: hidden;;
+        overflow: hidden;
+        line-height: 1;
+    }
+    .aApp:hover{
+        background-color: #e5e9ef
     }
     .aApp img{
-        width: 100%;
+        width: 64px;
+        height: 64px;
         border-radius: 12px;
     }
     .aApp span{
@@ -40,10 +45,10 @@
         margin:8px auto;
         display: block;
         font-size: 14px;
-        line-height: 1;
         text-align: center;
         color:#222;
         overflow: hidden;
+        line-height: 1;
     }
 </style>
 
