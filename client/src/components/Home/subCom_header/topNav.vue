@@ -27,7 +27,7 @@
                     {liTitle:'画友',liText:'画友',downDiv:''},
                     {liTitle:'来探索bilibli音乐的世界吧~',liText:'音频',downDiv:''},
                     {liTitle:'游戏中心',liText:'游戏中心',downDiv:'gameCenter'},
-                    {liTitle:'直播',liText:'直播',downDiv:''},
+                    {liTitle:'直播',liText:'直播',downDiv:'live'},
                     {liTitle:'会员购',liText:'会员购',downDiv:''},
                     {liTitle:'BML',liText:'BML',downDiv:''},
                 ],

@@ -11,6 +11,7 @@
 
 <script>
     import gameCenter from "@/components/Home/subCom_header/gameCenter/gameCenter.vue"
+    import live from "@/components/Home/subCom_header/live/live.vue"
     export default({
         data(){
             return{
@@ -29,7 +30,8 @@
             
         },
         components:{
-            gameCenter
+            gameCenter,
+            live
         },
         props:['liTitle','liText','downDiv']
     })

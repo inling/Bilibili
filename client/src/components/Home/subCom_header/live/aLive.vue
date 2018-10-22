@@ -1,9 +1,7 @@
 <template>
     <router-link  class="aLive" to="#">
         <img class="face" :src="liver.face" alt="">
-        <div class="hover">
-            "LIVE"
-        </div>
+        <div class="hover">LIVE</div>
         <p class="uname">{{liver.uname}}</p>
     </router-link>
 </template>
@@ -37,6 +35,27 @@
         height:64px;
         border-radius: 50%;
         outline: 0;
+    }
+     .aLive .hover{
+        position: absolute;
+        top:0;
+        left:0;
+        width:64px;
+        height:64px;
+        line-height: 64px;
+        text-indent: 22px;
+        border-radius: 50%;
+        opacity: 0;
+        background: rgba(0,0,0,.5);
+        font-size:15px;
+        color:#fff;
+        font-weight:700;
+        transform: scale(0);
+        transition: all .2s cubic-bezier(.22,.58,.12,.98);
+    }
+    .aLive:hover .hover{
+        opacity: 1;
+        transform: scale(1);
     }
     .aLive .hover:before{
         content: "";

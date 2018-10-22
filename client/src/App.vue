@@ -41,4 +41,11 @@
     height: 100%;
     padding: 0 8px;
   }
+
+  .clear:after{
+    content: '';
+    display: block;
+    clear: both;
+    visibility: hidden;
+  }
 </style>
