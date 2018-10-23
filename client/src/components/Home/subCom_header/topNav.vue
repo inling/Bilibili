@@ -29,15 +29,15 @@
                     {liTitle:'游戏中心',liText:'游戏中心',downDiv:'gameCenter'},
                     {liTitle:'直播',liText:'直播',downDiv:'live'},
                     {liTitle:'会员购',liText:'会员购',downDiv:''},
-                    {liTitle:'BML',liText:'BML',downDiv:''},
+                    {liTitle:'BML',liText:'BML',downDiv:'bml'},
                 ],
                 message:[
-                    {liTitle:'',liText:'大会员',mesNum:0},
-                    {liTitle:'消息',liText:'消息',mesNum:50},
-                    {liTitle:'',liText:'动态',mesNum:0},
-                    {liTitle:'',liText:'稍后再看',mesNum:0},
-                    {liTitle:'',liText:'收藏夹',mesNum:0},
-                    {liTitle:'',liText:'历史',mesNum:0}
+                    {liTitle:'',liText:'大会员',mesNum:0,downDiv:'bVip'},
+                    {liTitle:'消息',liText:'消息',mesNum:50,downDiv:'information'},
+                    {liTitle:'',liText:'动态',mesNum:0,downDiv:''},
+                    {liTitle:'',liText:'稍后再看',mesNum:0,downDiv:''},
+                    {liTitle:'',liText:'收藏夹',mesNum:0,downDiv:''},
+                    {liTitle:'',liText:'历史',mesNum:0,downDiv:''}
                 ]        
             }
         },
@@ -56,7 +56,7 @@
     })
 </script>
 
-<style scoped>
+<style>
     @media screen and (max-width:1400px){
         .topNav .menuWrapper.bili-wrapper {
             width: 980px;
@@ -116,5 +116,20 @@
         float: right;
     }
 
+    /*头部全局过渡效果*/
+    .box-show-enter-active{
+        transition: all .3s ease;
+    }
+    .box-show-leave-active{
+        transition: all .3s ease;
+    }
+    .box-show-enter{
+        margin-top: 8px;
+        opacity: 0;
+    }
+    .box-show-leave-to{
+        margin-top: 8px;
+        opacity: 0;
+    }
 </style>
 

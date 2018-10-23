@@ -25,27 +25,25 @@
     display: inline-block;
     background-image: url('/img/icons.png');
   }
-  li.headli{
-    float: left;
-    position: relative;
-    text-align: center;
-    height: 42px;
-    line-height: 42px;
-  }
-  li.headli:hover{
-    background-color: hsla(0,0%,100%,.3);
-  }
-
-  a.heada{
-    display: block;
-    height: 100%;
-    padding: 0 8px;
-  }
 
   .clear:after{
     content: '';
     display: block;
     clear: both;
     visibility: hidden;
+  }
+
+  /*认证类别和会员图标*/
+  .legalize-14-1,.legalize-14-2{
+    background-image: url(/img/vipIcon.png);
+    height: 20px;
+    width: 20px;
+    display: inline-block;
+  }
+  .legalize-14-1 {
+    background-position: -39px -83px;
+  }
+  .legalize-14-2 {
+    background-position: -105px -83px;
   }
 </style>

@@ -66,19 +66,5 @@
         top: 30px;
         background: url(/img/header/erW.png);
     }
-    .box-show-enter-active{
-        transition: all .3s ease;
-    }
-    .box-show-leave-active{
-        transition: all .3s ease;
-    }
-    .box-show-enter{
-        margin-top: 10px;
-        opacity: 0;
-    }
-    .box-show-leave-to{
-        margin-top: 10px;
-        opacity: 0;
-    }
 </style>
 

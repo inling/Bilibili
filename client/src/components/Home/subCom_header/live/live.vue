@@ -72,7 +72,6 @@
         font-size:12px;
         margin-top:5px;
         border-right:1px solid #eaeaea;
-        line-height: normal;
     }
     
     .live .hot-act{

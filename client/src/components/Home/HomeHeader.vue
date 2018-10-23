@@ -51,9 +51,25 @@
     })
 </script>
 
-<style scoped>
+<style>
     .appHeader{
         font: 12px Helvetica Neue,Helvetica,Arial,Microsoft Yahei,Hiragino Sans GB,Heiti SC,WenQuanYi Micro Hei,sans-serif;
+    }
+    li.headli{
+        float: left;
+        position: relative;
+        text-align: center;
+        height: 42px;
+        line-height: 42px;
+    }
+    li.headli:hover{
+        background-color: hsla(0,0%,100%,.3);
+    }
+
+    a.heada{
+        display: block;
+        height: 100%;
+        padding: 0 8px;
     }
 </style>
 

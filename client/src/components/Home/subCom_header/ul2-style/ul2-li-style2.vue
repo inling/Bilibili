@@ -1,24 +1,38 @@
 <template>
-    <li :title="liTitle" class="ul2-li-style2 headli">
+    <li :title="liTitle" class="ul2-li-style2 headli" @mouseover="setMouseOver" @mouseout="setMouseOut">
         <router-link to="#" class="heada">{{liText}}
             <div class="num" v-show='mesNum!=0'>{{mesNum}}</div>
         </router-link>
+        <transition name="box-show">
+            <component :is="downDiv" v-show="isShowBox"></component>
+        </transition>
     </li>
 </template>
 <script>
+    import bVip from "@/components/Home/subCom_header/bVip/bVip.vue"
+    import information from "@/components/Home/subCom_header/information/information.vue"
     export default({
         data(){
-            return {}
+            return {
+                isShowBox:false
+            }
         },
         methods:{
-
+            setMouseOver(){
+                this.isShowBox=true;
+            },
+            setMouseOut(){
+                this.isShowBox=false;
+            }
         },
         created(){
 
         },
         components:{
+            bVip,
+            information
         },
-        props:['liTitle','liText','mesNum']
+        props:['liTitle','liText','mesNum','downDiv']
     })
 </script>
 <style scoped>

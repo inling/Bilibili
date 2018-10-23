@@ -12,6 +12,7 @@
 <script>
     import gameCenter from "@/components/Home/subCom_header/gameCenter/gameCenter.vue"
     import live from "@/components/Home/subCom_header/live/live.vue"
+    import bml from "@/components/Home/subCom_header/bml/bml.vue"
     export default({
         data(){
             return{
@@ -31,7 +32,8 @@
         },
         components:{
             gameCenter,
-            live
+            live,
+            bml
         },
         props:['liTitle','liText','downDiv']
     })
@@ -42,6 +44,7 @@
         position: absolute;
         left:0;
         top:42px; 
+        line-height:normal
     }
     .box-show-enter-active{
         transition: all .3s ease;
