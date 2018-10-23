@@ -91,5 +91,10 @@
         width: 100%;
         color: #00a1d6;
     }
+    .video-bar .r .info a:hover{
+        text-decoration: underline;
+    }
+
+
 </style>
 

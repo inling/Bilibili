@@ -1,13 +1,15 @@
 <template>
     <ul class="view-video">
-        <li class="no-data">暂时没有新动态了哦!</li>
+        <li class="no-data" @mouseover="isShow=true">暂时没有新动态了哦!</li>
         <span></span>
         <li class="history">
             <div class="history-tag">历史动态</div>
         </li>
-        <span>
-            <video-bar v-for="(item,i) in videos" :key="i" :video="item"></video-bar>
-        </span>
+        <transition name="fade">
+            <div v-if="isShow">
+                <video-bar v-for="(item,i) in videos" :key="i" :video="item"></video-bar>
+            </div>
+         </transition>
     </ul>
 </template>
 <script>
@@ -33,7 +35,9 @@
 
         },
         created() {
-
+        },
+        mounted(){
+            this.isShow=true;
         },
         components:{
             videoBar,
@@ -85,4 +89,13 @@
         color: #99a2aa;
         background-color: #fff;
     }
+
+    .fade-enter-active, .fade-leave-active {
+        transition: all .8s ease;
+    }
+    .fade-enter, .fade-leave-to /* .fade-leave-active in <2.1.8 */ {
+        opacity: 0;
+        margin-left:380px;
+    }
+
 </style>

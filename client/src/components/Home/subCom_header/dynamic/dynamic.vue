@@ -14,7 +14,13 @@
             <div class="dyn_wrapper" :style="height[index]">
                 <component :is="coms[index]"></component>
             </div>
-            <div class="dyn_bottom"></div>
+            <div class="dyn_bottom">
+                <div class="b">
+                    <router-link to="#">
+                        <span>查看全部</span>
+                    </router-link>
+                </div>
+            </div>
         </div>
     </div>
 </template>
@@ -133,6 +139,25 @@
         overflow-x: hidden;
         background-color: #fff;
         position: relative;
-        transition: height .5s;
+        transition: all .5s;
+    }
+    .dynamic .dynamic-m .dyn_bottom .b{
+        line-height: 30px;
+        height: 50px;
+        position: relative;
+        padding: 10px 12px;
+        white-space: nowrap;
+        text-align: center;
+    }
+    .dynamic .dynamic-m .dyn_bottom .b a{
+        display: block;
+        background-color: #e5e9ef;
+        border-radius: 4px;
+        height: 28px;
+        line-height: 28px;
+        border: 1px solid #e0e6ed;
+    }
+    .dynamic .dynamic-m .dyn_bottom .b a:hover{
+        background-color: #ccd0d7;
     }
 </style>
