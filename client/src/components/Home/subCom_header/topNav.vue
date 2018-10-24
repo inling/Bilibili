@@ -34,7 +34,7 @@
                 message:[
                     {liTitle:'',liText:'大会员',mesNum:0,downDiv:'bVip'},
                     {liTitle:'消息',liText:'消息',mesNum:50,downDiv:'information'},
-                    {liTitle:'',liText:'动态',mesNum:0,downDiv:''},
+                    {liTitle:'',liText:'动态',mesNum:0,downDiv:'dynamic'},
                     {liTitle:'',liText:'稍后再看',mesNum:0,downDiv:''},
                     {liTitle:'',liText:'收藏夹',mesNum:0,downDiv:''},
                     {liTitle:'',liText:'历史',mesNum:0,downDiv:''}

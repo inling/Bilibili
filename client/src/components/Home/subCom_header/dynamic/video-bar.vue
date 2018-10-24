@@ -36,7 +36,7 @@
     .video-bar:hover{
         background-color: #e5e9ef;
     }
-    .preview{
+    .video-bar .preview{
         position: relative;
         width: 40px;
         height: 30px;
@@ -48,13 +48,6 @@
         margin-top: 4px;
         border-radius: 4px;
                 text-align: left;
-    }
-    .preview .small-img{
-        display: inline-block;
-        width: 40px!important;
-        height: 30px;
-        background: 50%/cover no-repeat;
-        border-radius: 4px;
     }
     .video-bar .r{
         text-align: left;

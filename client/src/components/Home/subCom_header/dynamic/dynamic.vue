@@ -12,7 +12,7 @@
                 </div>            
             </div>
             <div class="dyn_wrapper" :style="height[index]">
-                <component :is="coms[index]"></component>
+                <view-video :mode="index" :videos="videos"></view-video>
             </div>
             <div class="dyn_bottom">
                 <div class="b">
@@ -27,15 +27,22 @@
 
 <script>
     import viewVideo from "@/components/Home/subCom_header/dynamic/view-video.vue"
-    import viewLive from "@/components/Home/subCom_header/dynamic/view-live.vue"
-    import viewSpec from "@/components/Home/subCom_header/dynamic/view-spec.vue"
     export default({
         data(){
             return{
                 index:0,
                 left:[{left:'6px'},{left:'50px'},{left:'94px'}],
-                coms:['viewVideo','viewLive','viewSpec'],
-                height:[{height:'304px'},{height:'120px'},{height:'304px'}]
+                height:[{height:'304px'},{height:'120px'},{height:'304px'}],
+                videos:[
+                    {smallImg:'background-image:url(/img/dyna/japanlife1.jpg@80w_60h.webp)',thelast:'background-image:url(/img/dyna/japanlife2.jpg@80w_60h.webp)'},
+                    {smallImg:'background-image:url(/img/dyna/japanlife2.jpg@80w_60h.webp)',thelast:''},
+                    {smallImg:'background-image:url(/img/dyna/japanlife1.jpg@80w_60h.webp)',thelast:''},
+                    {smallImg:'background-image:url(/img/dyna/japanlife2.jpg@80w_60h.webp)',thelast:''},
+                    {smallImg:'background-image:url(/img/dyna/japanlife1.jpg@80w_60h.webp)',thelast:''},
+                    {smallImg:'background-image:url(/img/dyna/japanlife2.jpg@80w_60h.webp)',thelast:''},
+                    {smallImg:'background-image:url(/img/dyna/japanlife1.jpg@80w_60h.webp)',thelast:''},
+                    {smallImg:'background-image:url(/img/dyna/japanlife2.jpg@80w_60h.webp)',thelast:''}
+                ]        
             }
         },
         methods:{
@@ -57,9 +64,7 @@
             
         },
         components:{
-            viewVideo,
-            viewLive,
-            viewSpec
+            viewVideo
         },
         props:[]
     })
@@ -67,6 +72,8 @@
 
 <style>
     .dynamic{
+        position: absolute;
+        left:-170px;
         background:transparent;
         width:380px;
         padding:0 10px 10px;

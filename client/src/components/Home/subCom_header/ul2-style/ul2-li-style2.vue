@@ -11,6 +11,7 @@
 <script>
     import bVip from "@/components/Home/subCom_header/bVip/bVip.vue"
     import information from "@/components/Home/subCom_header/information/information.vue"
+    import dynamic from "@/components/Home/subCom_header/dynamic/dynamic.vue"
     export default({
         data(){
             return {
@@ -30,7 +31,8 @@
         },
         components:{
             bVip,
-            information
+            information,
+            dynamic
         },
         props:['liTitle','liText','mesNum','downDiv']
     })

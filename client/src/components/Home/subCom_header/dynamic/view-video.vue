@@ -1,13 +1,23 @@
 <template>
     <ul class="view-video">
-        <li class="no-data" @mouseover="isShow=true">暂时没有新动态了哦!</li>
-        <span></span>
-        <li class="history">
+        <li class="no-data" v-show="mode2">暂时没有新动态了哦!</li>
+        <transition name="fade">
+            <div v-show="mode1">
+                <video-bar v-for="(item,i) in videos" :key="i" :video="item"></video-bar>
+            </div>
+            <div v-show="mode3">
+                <video-bar2 v-for="(item,i) in videos" :key="i" :video="item"></video-bar2>
+            </div>
+         </transition>
+        <li class="history" v-show="mode4">
             <div class="history-tag">历史动态</div>
         </li>
         <transition name="fade">
-            <div v-if="isShow">
+            <div v-show="mode1">
                 <video-bar v-for="(item,i) in videos" :key="i" :video="item"></video-bar>
+            </div>
+            <div v-show="mode3">
+                <video-bar2 v-for="(item,i) in videos" :key="i" :video="item"></video-bar2>
             </div>
          </transition>
     </ul>
@@ -18,17 +28,10 @@
     export default({
         data(){
             return {
-                isShow:false,
-                videos:[
-                    {smallImg:'background-image:url(/img/dyna/japanlife1.jpg@80w_60h.webp)'},
-                    {smallImg:'background-image:url(/img/dyna/japanlife2.jpg@80w_60h.webp)'},
-                    {smallImg:'background-image:url(/img/dyna/japanlife1.jpg@80w_60h.webp)'},
-                    {smallImg:'background-image:url(/img/dyna/japanlife2.jpg@80w_60h.webp)'},
-                    {smallImg:'background-image:url(/img/dyna/japanlife1.jpg@80w_60h.webp)'},
-                    {smallImg:'background-image:url(/img/dyna/japanlife2.jpg@80w_60h.webp)'},
-                    {smallImg:'background-image:url(/img/dyna/japanlife1.jpg@80w_60h.webp)'},
-                    {smallImg:'background-image:url(/img/dyna/japanlife2.jpg@80w_60h.webp)'}
-                ]
+                mode1:false,
+                mode2:true,
+                mode3:false,
+                mode4:true,
             }
         },
         methods:{
@@ -37,13 +40,25 @@
         created() {
         },
         mounted(){
-            this.isShow=true;
+            this.mode1=true;
+            this.mode3=true;
         },
         components:{
             videoBar,
             videoBar2
         },
-        props:[]
+        props:['mode','videos'],
+        watch:{
+            mode:function(val,oldVal){
+                if(val==0){
+                    
+                }else if(val==1){
+
+                }else if(val==2){
+                    
+                }
+            }
+        }
     })
 </script>
 
@@ -90,6 +105,13 @@
         background-color: #fff;
     }
 
+    .view-video .small-img{
+        display: inline-block;
+        width: 40px!important;
+        height: 30px;
+        background: 50%/cover no-repeat;
+        border-radius: 4px;
+    }
     .fade-enter-active, .fade-leave-active {
         transition: all .8s ease;
     }
