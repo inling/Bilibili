@@ -1,15 +1,15 @@
 <template>
     <ul class="view-video">
-        <li class="no-data" v-show="mode2">暂时没有新动态了哦!</li>
+        <li class="no-data" v-show="mode1||mode2||mode3">暂时没有新动态了哦!</li>
         <transition name="fade">
-            <div v-show="mode1">
+            <div v-show="mode1||mode2">
                 <video-bar v-for="(item,i) in videos" :key="i" :video="item"></video-bar>
             </div>
             <div v-show="mode3">
                 <video-bar2 v-for="(item,i) in videos" :key="i" :video="item"></video-bar2>
             </div>
          </transition>
-        <li class="history" v-show="mode4">
+        <li class="history" v-show="mode1||mode3">
             <div class="history-tag">历史动态</div>
         </li>
         <transition name="fade">

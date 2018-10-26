@@ -33,16 +33,40 @@
                 index:0,
                 left:[{left:'6px'},{left:'50px'},{left:'94px'}],
                 height:[{height:'304px'},{height:'120px'},{height:'304px'}],
-                videos:[
-                    {smallImg:'background-image:url(/img/dyna/japanlife1.jpg@80w_60h.webp)',thelast:'background-image:url(/img/dyna/japanlife2.jpg@80w_60h.webp)'},
-                    {smallImg:'background-image:url(/img/dyna/japanlife2.jpg@80w_60h.webp)',thelast:''},
-                    {smallImg:'background-image:url(/img/dyna/japanlife1.jpg@80w_60h.webp)',thelast:''},
-                    {smallImg:'background-image:url(/img/dyna/japanlife2.jpg@80w_60h.webp)',thelast:''},
-                    {smallImg:'background-image:url(/img/dyna/japanlife1.jpg@80w_60h.webp)',thelast:''},
-                    {smallImg:'background-image:url(/img/dyna/japanlife2.jpg@80w_60h.webp)',thelast:''},
-                    {smallImg:'background-image:url(/img/dyna/japanlife1.jpg@80w_60h.webp)',thelast:''},
-                    {smallImg:'background-image:url(/img/dyna/japanlife2.jpg@80w_60h.webp)',thelast:''}
-                ]        
+                videos_history:[
+                    {smallImg:'background-image:url(/img/dyna/japanlife1.jpg@80w_60h.webp)'},
+                    {smallImg:'background-image:url(/img/dyna/japanlife2.jpg@80w_60h.webp)'},
+                    {smallImg:'background-image:url(/img/dyna/japanlife1.jpg@80w_60h.webp)'},
+                    {smallImg:'background-image:url(/img/dyna/japanlife2.jpg@80w_60h.webp)'},
+                    {smallImg:'background-image:url(/img/dyna/japanlife1.jpg@80w_60h.webp)'},
+                    {smallImg:'background-image:url(/img/dyna/japanlife2.jpg@80w_60h.webp)'},
+                    {smallImg:'background-image:url(/img/dyna/japanlife1.jpg@80w_60h.webp)'},
+                    {smallImg:'background-image:url(/img/dyna/japanlife2.jpg@80w_60h.webp)'}
+                ],
+                videos_last:[
+                    {smallImg:'background-image:url(/img/dyna/japanlife1.jpg@80w_60h.webp)'},
+                    {smallImg:'background-image:url(/img/dyna/japanlife2.jpg@80w_60h.webp)'},
+                    {smallImg:'background-image:url(/img/dyna/japanlife1.jpg@80w_60h.webp)'}
+                ],
+                live:[
+                    {smallImg:'background-image:url(/img/dyna/japanlife1.jpg@80w_60h.webp)'},
+                    {smallImg:'background-image:url(/img/dyna/japanlife2.jpg@80w_60h.webp)'},
+                ],
+                only_history:[
+                    {smallImg:'background-image:url(/img/dyna/japanlife1.jpg@80w_60h.webp)'},
+                    {smallImg:'background-image:url(/img/dyna/japanlife2.jpg@80w_60h.webp)'},
+                    {smallImg:'background-image:url(/img/dyna/japanlife1.jpg@80w_60h.webp)'},
+                    {smallImg:'background-image:url(/img/dyna/japanlife2.jpg@80w_60h.webp)'},
+                    {smallImg:'background-image:url(/img/dyna/japanlife1.jpg@80w_60h.webp)'},
+                    {smallImg:'background-image:url(/img/dyna/japanlife2.jpg@80w_60h.webp)'},
+                    {smallImg:'background-image:url(/img/dyna/japanlife1.jpg@80w_60h.webp)'},
+                    {smallImg:'background-image:url(/img/dyna/japanlife2.jpg@80w_60h.webp)'}
+                ],
+                only_live:[
+                    {smallImg:'background-image:url(/img/dyna/japanlife1.jpg@80w_60h.webp)'},
+                    {smallImg:'background-image:url(/img/dyna/japanlife2.jpg@80w_60h.webp)'},
+                ],
+
             }
         },
         methods:{
