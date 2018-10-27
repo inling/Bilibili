@@ -1,25 +1,28 @@
 <template>
     <ul class="view-video">
-        <li class="no-data" v-show="mode1||mode2||mode3">暂时没有新动态了哦!</li>
-        <transition name="fade">
-            <div v-show="mode1||mode2">
-                <video-bar v-for="(item,i) in videos" :key="i" :video="item"></video-bar>
+        <li class="no-data" v-show="(mode1||mode2||mode3)&&hasLast">暂时没有新动态了哦!</li>
+        <transition-group name="fade" >
+            <div v-show="mode1&&!hasLast" key="1">
+                <video-bar v-for="(item,i) in videos_last" :key="i" :item="item"></video-bar>
             </div>
-            <div v-show="mode3">
-                <video-bar2 v-for="(item,i) in videos" :key="i" :video="item"></video-bar2>
+            <div v-show="mode2&&!hasLast" key="2">
+                <video-bar v-for="(item,i) in live" :key="i" :item="item"></video-bar>
             </div>
-         </transition>
-        <li class="history" v-show="mode1||mode3">
+            <div v-show="mode3&&!hasLast" key="3">
+                <video-bar2 v-for="(item,i) in only_last" :key="i" :item="item"></video-bar2>
+            </div>
+         </transition-group>
+        <li class="history" v-show="!mode2">
             <div class="history-tag">历史动态</div>
         </li>
-        <transition name="fade">
-            <div v-show="mode1">
-                <video-bar v-for="(item,i) in videos" :key="i" :video="item"></video-bar>
+        <transition-group name="fade">
+            <div v-show="mode1"  key="4">
+                <video-bar v-for="(item,i) in videos_history" :key="i" :item="item"></video-bar>
             </div>
-            <div v-show="mode3">
-                <video-bar2 v-for="(item,i) in videos" :key="i" :video="item"></video-bar2>
+            <div v-show="mode3"  key="5">
+                <video-bar2 v-for="(item,i) in only_history" :key="i" :item="item"></video-bar2>
             </div>
-         </transition>
+         </transition-group>
     </ul>
 </template>
 <script>
@@ -28,34 +31,54 @@
     export default({
         data(){
             return {
-                mode1:false,
-                mode2:true,
+                mode1:true,
+                mode2:false,
                 mode3:false,
-                mode4:true,
+                hasLast:false
             }
         },
         methods:{
-
+            
         },
         created() {
         },
         mounted(){
-            this.mode1=true;
-            this.mode3=true;
+            if(this.videos_last.length==0) 
+                this.hasLast=true;
+            else
+                this.hasLast=false;
         },
         components:{
             videoBar,
             videoBar2
         },
-        props:['mode','videos'],
+        props:['mode','videos_history','videos_last','live','only_history','only_last'],
         watch:{
             mode:function(val,oldVal){
-                if(val==0){
-                    
-                }else if(val==1){
-
+                if(val==1){
+                    this.mode1=true;
+                    this.mode2=false;
+                    this.mode3=false;
+                    if(this.videos_last.length==0) 
+                        this.hasLast=true;
+                    else
+                        this.hasLast=false;
                 }else if(val==2){
-                    
+                    this.mode1=false;
+                    this.mode2=true;
+                    this.mode3=false;
+                    if(this.live.length==0) 
+                        this.hasLast=true;
+                    else
+                        this.hasLast=false;
+                }else if(val==3){
+                    this.mode1=false;
+                    this.mode2=false;
+                    this.mode3=true;
+                    if(this.only_last.length==0) 
+                        this.hasLast=true;
+                    else
+                        this.hasLast=false;
                 }
             }
         }
@@ -112,10 +135,10 @@
         background: 50%/cover no-repeat;
         border-radius: 4px;
     }
-    .fade-enter-active, .fade-leave-active {
-        transition: all .8s ease;
+    .fade-enter-active{
+        transition: margin .8s cubic-bezier(.22,.58,.12,.98),opacity .8s ease;
     }
-    .fade-enter, .fade-leave-to /* .fade-leave-active in <2.1.8 */ {
+    .fade-enter{
         opacity: 0;
         margin-left:380px;
     }

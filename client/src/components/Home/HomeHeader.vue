@@ -71,5 +71,12 @@
         height: 100%;
         padding: 0 8px;
     }
+    .b-icon {
+        display: inline-block;
+        vertical-align: middle;
+        width: 12px;
+        height: 12px;
+        background: url(//static.hdslb.com/images/base/icons.png) no-repeat;
+    }
 </style>
 

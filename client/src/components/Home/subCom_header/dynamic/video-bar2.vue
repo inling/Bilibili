@@ -1,18 +1,18 @@
 <template>
-    <li class="video-bar2">
+    <li class="video-bar2" style="width:330px;">
         <div class="preview v r">
             <router-link to="#" class="small-img"></router-link>
         </div>
         <div class="r">
             <div class="title">
-                <div title="企业/团体认证" class="legalize-14-2" style="vertical-align: top; margin-top: 2px;">
+                <div :title="autitle" :class="auClass" v-show="isAu" style="vertical-align: top; margin-top: 2px;">
                 </div>
-                <a href="//space.bilibili.com/22500342" target="_blank">留学的真相</a>       
+                <router-link :to="item.href" target="_blank">{{item.uname}}</router-link>       
                 <span>投稿了</span>
             </div>
             <div class="info">
-                <a href="//www.bilibili.com/read/cv1380182" target="_blank" title="外媒|哈佛走上被告席，“亚裔歧视案”引爆舆论风波">外媒|哈佛走上被告席，“亚裔歧视案”引爆舆论风波
-                </a>
+                <router-link :to="item.href" target="_blank" :title="item.title">{{item.title}}
+                </router-link>
             </div>
         </div>
     </li>    
@@ -20,25 +20,40 @@
 <script>
     export default({
         data(){
-            return{}
+            return{
+                isAu:true,
+                autitle:'',
+                auClass:''
+            }
         },
         methods:{
-
+            justifyAu(){
+                if(this.item.authentication==0){
+                    this.isAu=false;
+                }else if(this.item.authentication==1){
+                    this.isAu=true;
+                    this.autitle='个人认证';
+                    this.auClass='legalize-14-1';
+                }else if(this.item.authentication==2){
+                    this.isAu=true;
+                    this.autitle='企业/团体认证';
+                    this.auClass='legalize-14-2';
+                }
+            }
         },
         created() {
-            
+            this.justifyAu();
         },
         components:{
 
         },
-        props:['video']
+        props:['item']
     })
 </script>
 <style>
     .video-bar2:hover{
         background-color: #e5e9ef;
     }
-
     .video-bar2 .preview.r {
         float: right;
         background: url(/img/header/loading.gif) 50% no-repeat;
@@ -51,7 +66,7 @@
     }
     .video-bar2 .preview.v  a{
         background-image: url(/img/dyna/hafo.jpg@80w_60h.webp);
-        display: inline-block;
+        display: block;
     }
 
     .video-bar2  .r {
@@ -80,5 +95,8 @@
         color: #00a1d6;
         display: inline-block;
     } 
+    .video-bar2 .r .info a:hover{
+        text-decoration: underline;
+    }
 </style>
 

@@ -12,7 +12,7 @@
                 </div>            
             </div>
             <div class="dyn_wrapper" :style="height[index]">
-                <view-video :mode="index" :videos="videos"></view-video>
+                <view-video :mode="mode" :videos_history="videos_history" :videos_last="videos_last" :live="live" :only_history="only_history" :only_last="only_last"></view-video>
             </div>
             <div class="dyn_bottom">
                 <div class="b">
@@ -31,40 +31,84 @@
         data(){
             return{
                 index:0,
+                mode:1,
                 left:[{left:'6px'},{left:'50px'},{left:'94px'}],
                 height:[{height:'304px'},{height:'120px'},{height:'304px'}],
                 videos_history:[
-                    {smallImg:'background-image:url(/img/dyna/japanlife1.jpg@80w_60h.webp)'},
-                    {smallImg:'background-image:url(/img/dyna/japanlife2.jpg@80w_60h.webp)'},
-                    {smallImg:'background-image:url(/img/dyna/japanlife1.jpg@80w_60h.webp)'},
-                    {smallImg:'background-image:url(/img/dyna/japanlife2.jpg@80w_60h.webp)'},
-                    {smallImg:'background-image:url(/img/dyna/japanlife1.jpg@80w_60h.webp)'},
-                    {smallImg:'background-image:url(/img/dyna/japanlife2.jpg@80w_60h.webp)'},
-                    {smallImg:'background-image:url(/img/dyna/japanlife1.jpg@80w_60h.webp)'},
-                    {smallImg:'background-image:url(/img/dyna/japanlife2.jpg@80w_60h.webp)'}
+                    {   
+                        uname:'小豆蔻儿',
+                        authentication:'1',
+                        title:'【豆蔻教程】一款适合面基的汉服发型教程，不仅要显得发量多，还要把假发包都藏好～',
+                        href:'#',
+                        smallImg:'background-image:url(/img/dyna/xiaodoukou.jpg@80w_60h.webp)'},
+                    {   
+                        uname:'李长歌Echo',
+                        authentication:'0',
+                        title:'【剑网三】世外蓬莱技能奇穴详解！名与利几步之遥我都要！',
+                        href:'#',
+                        smallImg:'background-image:url(/img/dyna/lichangge.jpg@80w_60h.webp)'},
+                    {   
+                        uname:'留学的真相',
+                        authentication:'2',
+                        title:'【室内设计师】一个班全是中国人 来了三年学到了啥？',
+                        href:'#',
+                        smallImg:'background-image:url(/img/dyna/japanlife1.jpg@80w_60h.webp)'},
+                    {   
+                        uname:'留学的真相',
+                        authentication:'2',
+                        title:'【国人疯抢】日本小学生书包为啥这么贵？价格直逼LV',
+                        href:'#',
+                        smallImg:'background-image:url(/img/dyna/japanlife4.jpg@80w_60h.webp)'},
                 ],
                 videos_last:[
-                    {smallImg:'background-image:url(/img/dyna/japanlife1.jpg@80w_60h.webp)'},
-                    {smallImg:'background-image:url(/img/dyna/japanlife2.jpg@80w_60h.webp)'},
-                    {smallImg:'background-image:url(/img/dyna/japanlife1.jpg@80w_60h.webp)'}
+                    {   
+                        uname:'留学的真相',
+                        authentication:'2',
+                        title:'留学生【摆摊】卖辣子鸡 韩国大叔试吃后：味道也就那样吧',
+                        href:'#',
+                        smallImg:'background-image:url(/img/dyna/japanlife3.jpg@80w_60h.webp)'},
                 ],
                 live:[
-                    {smallImg:'background-image:url(/img/dyna/japanlife1.jpg@80w_60h.webp)'},
-                    {smallImg:'background-image:url(/img/dyna/japanlife2.jpg@80w_60h.webp)'},
+                     {   
+                        uname:'小豆蔻儿',
+                        authentication:'1',
+                        title:'【豆蔻教程】一款适合面基的汉服发型教程，不仅要显得发量多，还要把假发包都藏好～',
+                        href:'#',
+                        smallImg:'background-image:url(/img/dyna/xiaodoukou.jpg@80w_60h.webp)'},
+                    {   
+                        uname:'留学的真相',
+                        authentication:'2',
+                        title:'【室内设计师】一个班全是中国人 来了三年学到了啥？',
+                        href:'#',
+                        smallImg:'background-image:url(/img/dyna/japanlife1.jpg@80w_60h.webp)'},
                 ],
                 only_history:[
-                    {smallImg:'background-image:url(/img/dyna/japanlife1.jpg@80w_60h.webp)'},
-                    {smallImg:'background-image:url(/img/dyna/japanlife2.jpg@80w_60h.webp)'},
-                    {smallImg:'background-image:url(/img/dyna/japanlife1.jpg@80w_60h.webp)'},
-                    {smallImg:'background-image:url(/img/dyna/japanlife2.jpg@80w_60h.webp)'},
-                    {smallImg:'background-image:url(/img/dyna/japanlife1.jpg@80w_60h.webp)'},
-                    {smallImg:'background-image:url(/img/dyna/japanlife2.jpg@80w_60h.webp)'},
-                    {smallImg:'background-image:url(/img/dyna/japanlife1.jpg@80w_60h.webp)'},
-                    {smallImg:'background-image:url(/img/dyna/japanlife2.jpg@80w_60h.webp)'}
+                    {   
+                        uname:'留学的真相',
+                        authentication:'2',
+                        title:'【室内设计师】一个班全是中国人 来了三年学到了啥？',
+                        href:'#',
+                        smallImg:'background-image:url(/img/dyna/japanlife1.jpg@80w_60h.webp)'},
+                    {   
+                        uname:'留学的真相',
+                        authentication:'2',
+                        title:'留学生【摆摊】卖辣子鸡 韩国大叔试吃后：味道也就那样吧',
+                        href:'#',
+                        smallImg:'background-image:url(/img/dyna/japanlife3.jpg@80w_60h.webp)'},
+                    {   
+                        uname:'留学的真相',
+                        authentication:'2',
+                        title:'【国人疯抢】日本小学生书包为啥这么贵？价格直逼LV',
+                        href:'#',
+                        smallImg:'background-image:url(/img/dyna/japanlife4.jpg@80w_60h.webp)'},
                 ],
-                only_live:[
-                    {smallImg:'background-image:url(/img/dyna/japanlife1.jpg@80w_60h.webp)'},
-                    {smallImg:'background-image:url(/img/dyna/japanlife2.jpg@80w_60h.webp)'},
+                only_last:[
+                    {   
+                        uname:'留学的真相',
+                        authentication:'2',
+                        title:'一个曾经【抑郁】女生的自述 感觉每天坚持不下去！',
+                        href:'#',
+                        smallImg:'background-image:url(/img/dyna/japanlife5.jpg@80w_60h.webp)'},
                 ],
 
             }
@@ -73,6 +117,7 @@
             liClick(n){
                 this.index=n;
                 this.setColor(n);
+                this.mode=this.index+1;
             },
             setColor(n){
                 var lis=document.querySelectorAll('.dynamic .dynamic-m .dyn_menu .menu ul li');
@@ -81,7 +126,7 @@
                 }
                 n++;
                 var nowli=document.querySelector('.dynamic .dynamic-m .dyn_menu .menu ul li:nth-child('+n+')');
-                nowli.className='on'
+                nowli.className='on';
             }
         },
         created() {

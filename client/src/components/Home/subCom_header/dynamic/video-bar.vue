@@ -1,16 +1,16 @@
 <template>
     <li class="video-bar">
         <div class="preview">
-            <router-link to="#" class="small-img" :style="video.smallImg"></router-link>
+            <router-link to="#" class="small-img" :style="item.smallImg"></router-link>
         </div>
         <div class="r">
             <div class="title">
-                <div title="企业/团体认证" class="legalize-14-2"></div>
-                <router-link to="#">留学的真相</router-link>
+                <div :title="autitle" :class="auClass" v-show="isAu"></div>
+                <router-link :to="item.href">{{item.uname}}</router-link>
                 <span>投稿了</span>
             </div>
             <div class="info">
-                <router-link to="#" title="【室内设计师】一个班全是中国人 来了三年学到了啥？">【室内设计师】一个班全是中国人 来了三年学到了啥？</router-link>
+                <router-link :to="item.href" :title="item.title">{{item.title}}</router-link>
             </div>
         </div>
     </li>    
@@ -18,18 +18,34 @@
 <script>
     export default({
         data(){
-            return{}
+            return{
+                isAu:true,
+                autitle:'',
+                auClass:''
+            }
         },
         methods:{
-
+            justifyAu(){
+                if(this.item.authentication==0){
+                    this.isAu=false;
+                }else if(this.item.authentication==1){
+                    this.isAu=true;
+                    this.autitle='个人认证';
+                    this.auClass='legalize-14-1';
+                }else if(this.item.authentication==2){
+                    this.isAu=true;
+                    this.autitle='企业/团体认证';
+                    this.auClass='legalize-14-2';
+                }
+            }
         },
         created() {
-            
+            this.justifyAu();
         },
         components:{
 
         },
-        props:['video']
+        props:['item']
     })
 </script>
 <style>
@@ -47,7 +63,7 @@
         margin-right: 10px;
         margin-top: 4px;
         border-radius: 4px;
-                text-align: left;
+        text-align: left;
     }
     .video-bar .r{
         text-align: left;
@@ -61,6 +77,10 @@
     }
     
     .legalize-14-2{
+        vertical-align: top;
+        margin-top: 2px;
+    }
+    .legalize-14-1{
         vertical-align: top;
         margin-top: 2px;
     }
