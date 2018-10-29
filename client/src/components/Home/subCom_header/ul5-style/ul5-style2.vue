@@ -2,16 +2,12 @@
     <div class="ul5-style">
         <ul class="his">
             <div>
-                <ul5-li-style v-for="(item,i) in laterSees" :key="i" :laterSee="item"></ul5-li-style>
+                <ul5-li-style v-for="(item,i) in collection" :key="i" :laterSee="item"></ul5-li-style>
             </div>
         </ul>
         <div class="read-more-grp">
             <router-link to="#" target="_blank" class="read-more mr">
                 播放全部
-                <i class="b-icon b-icon-arrow-r"></i>
-            </router-link>
-            <router-link to="#" target="_blank" class="read-more">
-                查看全部
                 <i class="b-icon b-icon-arrow-r"></i>
             </router-link>
         </div>
@@ -22,17 +18,17 @@
     export default({
         data(){
             return{
-                laterSees:[]
+                collection:[]
             }
         },
         methods:{
-            getLaterSees(){
-                this.$store.dispatch('userBar/getLaterSees');
-                this.laterSees=this.$store.state.userBar.laterSees;
+            getCollections(){
+                this.$store.dispatch('userBar/getCollection');
+                this.collection=this.$store.state.userBar.collection;
             }
         },
         created() {
-            this.getLaterSees();
+            this.getCollections();
         },
         components:{
             ul5LiStyle
@@ -68,7 +64,7 @@
         display: block;
         background-color:#e5e9ef;
         border:1px solid #e0e6ed; 
-        width: 50%;
+        width: 100%;
         text-align: center;
         height:22px;
         line-height: 22px;

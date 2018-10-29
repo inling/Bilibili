@@ -13,6 +13,7 @@
     import information from "@/components/Home/subCom_header/information/information.vue"
     import dynamic from "@/components/Home/subCom_header/dynamic/dynamic.vue"
     import ul5Style from "@/components/Home/subCom_header/ul5-style/ul5-style.vue"
+    import ul5Style2 from "@/components/Home/subCom_header/ul5-style/ul5-style2.vue"
     export default({
         data(){
             return {
@@ -34,7 +35,7 @@
             bVip,
             information,
             dynamic,
-            ul5Style
+            ul5Style,ul5Style2
         },
         props:['liTitle','liText','mesNum','downDiv']
     })

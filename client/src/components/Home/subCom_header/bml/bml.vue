@@ -1,6 +1,6 @@
 <template>
     <div class="bml">
-        <bml-item v-for="(item,i) in nmls" :key="i" :nml="item"></bml-item>
+        <bml-item v-for="(item,i) in bmls" :key="i" :bml="item"></bml-item>
     </div>
 </template>
 <script>
@@ -8,17 +8,17 @@
     export default({
         data(){
             return {
-                nmls:[
-                    {url_img:'img/bml/bmlbj2.png'},
-                    {url_img:'img/bml/bmlsh2.png'}
-                ]
+                bmls:[]
             }
         },
         methods:{
-
+            getBMLs(){
+                this.$store.dispatch('homeBar/getBMLs');
+                this.bmls=this.$store.state.homeBar.bmls;
+            }
         },
         created() {
-            
+            this.getBMLs();
         },
         components:{
             bmlItem

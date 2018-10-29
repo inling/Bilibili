@@ -16,17 +16,17 @@
     export default({
         data(){
             return {
-                bVipRecommands:[
-                    {title:'古墓丽影 经典劳拉上线',url_img:'img/bVip/laola.png@107w_143h.webp'},
-                    {title:'喂！你有一张哔哩哔哩主题的信用卡待领取！',url_img:'img/bVip/bankCard.png@107w_143h.webp'}
-                ]
+                bVipRecommands:[]
             }
         },
         methods:{
-
+            getBVipRecommands(){
+                this.$store.dispatch('userBar/getBVipRecommands');
+                this.bVipRecommands=this.$store.state.userBar.bVipRecommands;
+            }
         },
         created() {
-            
+            this.getBVipRecommands();
         },
         components:{
             bVipItem

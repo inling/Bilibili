@@ -1,7 +1,7 @@
 <template>
     <ul class="ul2-style">
         <ul2-li-style1 :iface="user.iface"></ul2-li-style1>
-        <ul2-li-style2 v-for="(item,i) in message" :key="i" :liTitle="item.liTitle" :liText="item.liText" :mesNum="item.mesNum" :downDiv="item.downDiv"></ul2-li-style2>
+        <ul2-li-style2 v-for="(item,i) in barContent" :key="i" :liTitle="item.title" :liText="item.text" :mesNum="item.mesNum" :downDiv="item.downDiv"></ul2-li-style2>
     </ul>
 </template>
 <script>
@@ -10,19 +10,23 @@
     export default({
         data(){
             return {
+                barContent:[]
             }
         },
         methods:{
-
+            getBarContent(){
+                this.$store.dispatch('userBar/getBarContent');
+                this.barContent=this.$store.state.userBar.barContent;
+            }
         },
         created(){
-
+            this.getBarContent();
         },
         components:{
             ul2LiStyle1,
             ul2LiStyle2
         },
-        props:['message','user']
+        props:['user']
     })
 </script>
 <style>

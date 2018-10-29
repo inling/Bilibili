@@ -1,15 +1,15 @@
 <template>
     <div class="gameCenter">
         <div class="left">
-            <banner :bigAdImage="bigAd.bigAdImage" :bigAdImageText="bigAd.bigAdImageText"></banner>
+            <banner :bigAdImage="gameCenter.bigAd.bigAdImage" :bigAdImageText="gameCenter.bigAd.bigAdImageText"></banner>
             <div class="app-g">
-                <a-app v-for="(item,i) in smallAds" :key="i" :smallAdImage="item.smallAdImage" :smallAdImageText="item.smallAdImageText"></a-app>
+                <a-app v-for="(item,i) in gameCenter.smallAds" :key="i" :smallAdImage="item.smallAdImage" :smallAdImageText="item.smallAdImageText"></a-app>
             </div>
         </div>
         <div class="right">
             <router-link to="#" class="bbs">游戏论坛</router-link>
             <div class="newGamePrv">
-                <game-prv-item v-for="(item,i) in gamePrvs" :key="i" :gamePrv="item"></game-prv-item>
+                <game-prv-item v-for="(item,i) in gameCenter.gamePrvs" :key="i" :gamePrv="item"></game-prv-item>
             </div>
         </div>
     </div>
@@ -22,31 +22,17 @@
     export default({
         data(){
             return {
-                bigAd:{
-                    bigAdImage:'img/AppGame/FateGo.jpg',
-                    bigAdImageText:'命运-冠位指定（Fate/GO）'
-                },
-                smallAds:[
-                    {smallAdImage:'img/AppGame/fangzhou.png',smallAdImageText:'方舟指令'},
-                    {smallAdImage:'img/AppGame/bilanhangxian.png',smallAdImageText:'碧蓝航线'},
-                    {smallAdImage:'img/AppGame/yuezhan.jpg',smallAdImageText:'约战：精灵在临'},
-                ],
-                gamePrvs:[
-                    {name:'时之歌',url_img:'background:url(/img/AppGame/songOfTime.png) no-repeat'},
-                    {name:'光明勇士',url_img:'background:url(/img/AppGame/brightWarrior.png) no-repeat'},
-                    {name:'神回避3',url_img:'background:url(/img/AppGame/godEvasion3.png) no-repeat'},
-                    {name:'公主连结Re:Dive',url_img:'background:url(/img/AppGame/dive.png) no-repeat'},
-                    {name:'魔法纪录 魔法少女小圆外传',url_img:'background:url(/img/AppGame/magicGirl.png) no-repeat'},
-                    {name:'大王不高兴',url_img:'background:url(/img/AppGame/banG.png) no-repeat'},
-                    {name:'BanG Dream！',url_img:''},
-                ]
+                gameCenter:{}
             }
         },
         methods:{
-
+            getGameCenter(){
+                this.$store.dispatch('homeBar/getGameCenter');
+                this.gameCenter=this.$store.state.homeBar.gameCenter;
+            }
         },
         created() {
-            
+            this.getGameCenter();
         },
         components:{
             banner,

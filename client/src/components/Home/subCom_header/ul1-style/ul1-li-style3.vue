@@ -4,7 +4,9 @@
             <i class="bili-icon"></i>下载APP
         </router-link>
         <transition name="box-show">
-            <div class="app-orcode-box" v-show="isShowBox"></div>
+            <div class="app-orcode-box" v-show="isShowBox" :style="erW.erWFrame">
+                <div :style="erW.erWM"></div>
+            </div>
         </transition>
     </li>
 </template>
@@ -13,7 +15,8 @@
     export default({
         data(){
             return{
-                isShowBox:false
+                isShowBox:false,
+                erW:{}       
             }
         },
         methods:{
@@ -22,10 +25,15 @@
             },
             setMouseOut(){
                 this.isShowBox=false;
+            },
+            getErW(){
+                this.$store.dispatch('homeBar/getErW');
+                this.erW=this.$store.state.homeBar.erW;
             }
         },
         created() {
-            
+            this.getErW();
+            console.log(this.erW);
         },
         components:{
 
@@ -50,21 +58,19 @@
     }
     .ul1-li-style3 .app-orcode-box{
         position: absolute;
-        background: red;
+        background: white;
         left: -20px;
         top: 42px;
         width: 259px;
         height: 174px;
-        background: url(/img/header/orcode-frame.png);
     }
-    .app-orcode-box::before{
+    .app-orcode-box div{
         content: "";
         position: absolute;
         width: 97px;
         height: 97px;
         left: 82px;
         top: 30px;
-        background: url(/img/header/erW.png);
     }
 </style>
 

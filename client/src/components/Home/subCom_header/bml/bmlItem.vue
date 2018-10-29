@@ -1,6 +1,6 @@
 <template>
     <router-link class="bmlItem" to="#">
-        <img :src="nml.url_img" alt="" class="bmlbj">
+        <img :src="bml.url_img" alt="" class="bmlbj">
     </router-link>
 </template>
 <script>
@@ -17,7 +17,7 @@
         components:{
 
         },
-        props:['nml']
+        props:['bml']
     })
 </script>
 <style>

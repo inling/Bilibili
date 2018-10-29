@@ -10,20 +10,17 @@
     export default({
         data(){
             return{
-                infos:[
-                    {title:'回复我的',info_num:0},
-                    {title:'@我的',info_num:0},
-                    {title:'收到的赞',info_num:0},
-                    {title:'系统通知',info_num:44},
-                    {title:'我的消息',info_num:0}
-                ]
+                infos:[]
             }
         },
         methods:{
-
+            getInfos(){
+                this.$store.dispatch('userBar/getInfos');
+                this.infos=this.$store.state.userBar.infos;
+            }
         },
         created() {
-            
+            this.getInfos();
         },
         components:{
             infoItem

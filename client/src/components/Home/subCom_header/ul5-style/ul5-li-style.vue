@@ -1,6 +1,6 @@
 <template>
     <li class="ul5-li-style">
-        <router-link to="#" target="_blank" title="【灯泡】桐人女装进入女厕？炮姐发现他真实性别后大发雷霆">【灯泡】桐人女装进入女厕？炮姐发现他真实性别后大发雷霆</router-link>
+        <router-link to="laterSee.href" target="_blank" :title="laterSee.title">· {{laterSee.title}}</router-link>
     </li>
 </template>
 <script>
@@ -17,7 +17,7 @@
         components:{
 
         },
-        props:[]
+        props:['laterSee']
     })
 </script>
 <style scoped>
@@ -33,6 +33,7 @@
         white-space: nowrap;
         text-overflow: ellipsis;
         padding: 0 12px 0 22px;
+        width: 100%;
     }
     .ul5-li-style a{
         max-width: none;
@@ -43,6 +44,12 @@
         display: block;
         color: #222;
         transition: color .2s;
+    }
+    .ul5-li-style a:hover{
+        color: #00a1d6;
+    }
+    .ul5-li-style:hover{
+        background-color: #e5e9ef
     }
 </style>
 

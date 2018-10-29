@@ -3,13 +3,13 @@
         <div class="hot-live">
             <h3 class="live-title">热门直播：</h3>
             <div class="liver-list">
-                <a-live v-for="(item,i) in livers" :key="i" :liver="item"></a-live>
+                <a-live v-for="(item,i) in live.livers" :key="i" :liver="item"></a-live>
             </div>
         </div>
         <div class="hot-act">
             <h3 class="live-title">热门活动：</h3>
             <div class="act-list">
-                <a-act v-for="(item,i) in acts" :key="i" :act="item"></a-act>
+                <a-act v-for="(item,i) in live.acts" :key="i" :act="item"></a-act>
             </div>
         </div>
     </div>
@@ -20,28 +20,17 @@
     export default({
         data(){
             return {
-                livers:[
-                    {face:'img/live/wakeUp.jpg@100w_100h.webp',uname:'梦醒三生梦'},
-                    {face:'img/live/anuo.jpg@100w_100h.webp',uname:'阿若サン'},
-                    {face:'img/live/cantWakeUp.jpg@100w_100h.webp',uname:'睡不醒的某某阳'},
-                    {face:'img/live/crazyDog.jpg@100w_100h.webp',uname:'疯狗Katto'},
-                    {face:'img/live/OldBa.jpg@100w_100h.webp',uname:'OldBa1'},
-                    {face:'img/live/mao.jpg@100w_100h.webp',uname:'毛一_'},
-                    //{face:'img/live/itch.jpg@100w_100h.webp',uname:'痒局长'},
-                    //{face:'img/live/yoursCo.jpg@100w_100h.webp',uname:'你的可桜已上线'},
-                    //{face:'img/live/gugu.jpg@100w_100h.webp',uname:'Dae-离咕咕'},
-                ],
-                acts:[
-                    {url_img:"img/live/king.jpg"},
-                    {url_img:"img/live/bls.jpg"}
-                ]
+                live:[]
             }
         },
         methods:{
-
+            getLive(){
+                this.$store.dispatch('homeBar/getLive');
+                this.live=this.$store.state.homeBar.live;
+            }
         },
         created() {
-            
+            this.getLive();
         },
         components:{
             aLive,
