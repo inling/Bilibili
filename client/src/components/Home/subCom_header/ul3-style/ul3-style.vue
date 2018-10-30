@@ -3,7 +3,7 @@
         <!--首页-->
         <ul3-li-style1></ul3-li-style1>
         <!--动画、番剧、国创。。。。。放映厅-->
-        <ul3-li-style2 v-for="(item,i) in navlists" :key="i" :navName="item.navName" :numWrap="item.numWrap" :subLis="item.subLis"></ul3-li-style2>
+        <ul3-li-style2 v-for="(item,i) in navlists" :key="i" :navName="item.navName" :numWrap="item.numWrap" :subLis="item.subLis" :pageIndex="i"></ul3-li-style2>
         <!--专栏,广场,直播,小黑屋-->
         <ul3-li-style3 v-for="(item,i) in sideNavlists" :key="i+15" :iname="item.iname" :sname="item.sname"></ul3-li-style3>
     </ul>
@@ -16,21 +16,30 @@
     export default({
         data(){
             return {
-                
+                navlists:[],
+                sideNavlists:[],
             }
         },
         methods:{
-           
+            getNavlists(){
+                this.$store.dispatch('category/getNavlists');
+                this.navlists=this.$store.state.category.navlists;
+            },
+            getSideNavlists(){
+                this.$store.dispatch('category/getSideNavlists');
+                this.sideNavlists=this.$store.state.category.sideNavlists;
+            },
         },
         created() {
-            
+            this.getNavlists();
+            this.getSideNavlists();
         },
         components:{
             ul3LiStyle1,
             ul3LiStyle2,
             ul3LiStyle3
         },
-        props:['navlists','sideNavlists']
+        props:[]
     })
 </script>
 

@@ -14,26 +14,26 @@ const getters={
 }
 
 const mutations={
-    setBarContent(state,contents){
-        state.barContent=contents;
+    setBarContent(state,value){
+        state.barContent=value;
     },
-    setBVipRecommands(state,contents){
-        state.bVipRecommands=contents;
+    setBVipRecommands(state,value){
+        state.bVipRecommands=value;
     },
-    setInfos(state,contents){
-        state.infos=contents;
+    setInfos(state,value){
+        state.infos=value;
     },
-    setDynamic(state,contents){
-        state.dynamic=contents;
+    setDynamic(state,value){
+        state.dynamic=value;
     },
-    setLaterSees(state,contents){
-        state.laterSees=contents;
+    setLaterSees(state,value){
+        state.laterSees=value;
     },
-    setCollection(state,contents){
-        state.collection=contents;
+    setCollection(state,value){
+        state.collection=value;
     },
-    setSubmission(state,contents){
-        state.submission=contents;
+    setSubmission(state,value){
+        state.submission=value;
     }
 
 
@@ -41,32 +41,32 @@ const mutations={
 
 const actions={
     getBarContent({commit}){
-        var contents=userBar.getBarContent();
-        commit('setBarContent',contents);
+        var value=userBar.getBarContent();
+        commit('setBarContent',value);
     },
     getBVipRecommands({commit}){
-        var contents=userBar.getBVipRecommands();
-        commit('setBVipRecommands',contents);
+        var value=userBar.getBVipRecommands();
+        commit('setBVipRecommands',value);
     },
     getInfos({commit}){
-        var contents=userBar.getInfos();
-        commit('setInfos',contents);
+        var value=userBar.getInfos();
+        commit('setInfos',value);
     },
     getDynamic({commit}){
-        var contents=userBar.getDynamic();
-        commit('setDynamic',contents);
+        var value=userBar.getDynamic();
+        commit('setDynamic',value);
     },
     getLaterSees({commit}){
-        var contents=userBar.getLaterSees();
-        commit('setLaterSees',contents);
+        var value=userBar.getLaterSees();
+        commit('setLaterSees',value);
     },
     getCollection({commit}){
-        var contents=userBar.getCollection();
-        commit('setCollection',contents);
+        var value=userBar.getCollection();
+        commit('setCollection',value);
     },
     getSubmission({commit}){
-        var contents=userBar.getSubmission();
-        commit('setSubmission',contents)
+        var value=userBar.getSubmission();
+        commit('setSubmission',value)
     }
 
 }

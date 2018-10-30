@@ -1,5 +1,5 @@
 <template>
-    <li class="homeBox">
+    <li class="homeBox" @click='alterPage(0)'>
         <router-link to="#">
             <div>首页</div>
         </router-link>
@@ -14,11 +14,14 @@
             }
         },
         methods:{
-
+            alterPage(pageIndex){
+                this.$store.dispatch('global/getPageIndex',pageIndex);
+            }
         },
         created() {
             
         },
+        props:['pageIndex']
     })
 </script>
 

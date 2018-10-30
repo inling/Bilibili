@@ -1,7 +1,7 @@
 <template>
     <div class="bottomNav bili-wrapper">
         <div class="primary-menu border-b">
-            <ul3-style :navlists="navlists" :sideNavlists="sideNavlists"></ul3-style>    
+            <ul3-style></ul3-style>    
             <div class="gif-menu nav-gif">
                 <router-link to="#" class="random-p">
                     <img :src="rGif" alt="">
@@ -15,27 +15,15 @@
     export default({
         data(){
             return {
-                navlists:[],
-                sideNavlists:[],
-                rGif:'img/header/random-1.gif',
-                rGiflist:[
-                    'img/header/random-1.gif',
-                    'img/header/random-2.gif',
-                    'img/header/random-3.gif',
-                    'img/header/random-4.gif',
-                    'img/header/random-5.gif',
-                    'img/header/random-6.gif'
-                ]
+                rGif:'',
+                rGiflist:[]
             }
         },
         methods:{
-            getNavlists(){
-                this.$store.dispatch('category/getNavlists');
-                this.navlists=this.$store.state.category.navlists;
-            },
-            getSideNavlists(){
-                this.$store.dispatch('category/getSideNavlists');
-                this.sideNavlists=this.$store.state.category.sideNavlists;
+            getRGiflist(){
+                this.$store.dispatch('category/getRGiflist');
+                this.rGiflist=this.$store.state.category.rGiflist;
+                this.rGif=this.rGiflist[0];
             },
             setRandomImage(){
                 var l=this.rGiflist.length;
@@ -45,8 +33,7 @@
             
         },
         created(){
-            this.getNavlists();
-            this.getSideNavlists();
+            this.getRGiflist();
             this.setRandomImage();
         },
         components:{

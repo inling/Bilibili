@@ -1,6 +1,6 @@
 <template>
     <li class="ul5-li-style">
-        <router-link to="laterSee.href" target="_blank" :title="laterSee.title">· {{laterSee.title}}</router-link>
+        <router-link to="laterSee.href" target="_blank" :title="laterSee.title">{{laterSee.title}}</router-link>
     </li>
 </template>
 <script>
@@ -50,6 +50,17 @@
     }
     .ul5-li-style:hover{
         background-color: #e5e9ef
+    }
+    .ul5-li-style:before{
+        top: 13px;
+        left: 10px;
+        content: "";
+        display: block;
+        position: absolute;
+        width: 4px;
+        height: 4px;
+        border-radius: 2px;
+        background-color: #6d757a;
     }
 </style>
 

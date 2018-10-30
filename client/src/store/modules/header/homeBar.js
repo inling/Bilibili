@@ -12,44 +12,44 @@ const getters={
 }
 //变更状态
 const mutations={
-    setBarContent(state,contents){
-        state.barContent=contents;
+    setBarContent(state,value){
+        state.barContent=value;
     },
-    setGameCenter(state,contents){
-        state.gameCenter=contents;
+    setGameCenter(state,value){
+        state.gameCenter=value;
     },
-    setLive(state,contents){
-        state.live=contents;
+    setLive(state,value){
+        state.live=value;
     },
-    setBMLs(state,contents){
-        state.bmls=contents;
+    setBMLs(state,value){
+        state.bmls=value;
     },
-    setErW(state,contents){
-        state.erW=contents;
+    setErW(state,value){
+        state.erW=value;
     }
 }
 
 //提交mutation
 const actions={
     getBarContent({commit}){
-        var contents=homeBar.getBarContent();
-        commit('setBarContent',contents)
+        var value=homeBar.getBarContent();
+        commit('setBarContent',value)
     },
     getGameCenter({commit}){
-        var contents=homeBar.getGameCenter();
-        commit('setGameCenter',contents)
+        var value=homeBar.getGameCenter();
+        commit('setGameCenter',value)
     },
     getLive({commit}){
-        var contents=homeBar.getLive();
-        commit('setLive',contents)
+        var value=homeBar.getLive();
+        commit('setLive',value)
     },
     getBMLs({commit}){
-        var contents=homeBar.getBMLs();
-        commit('setBMLs',contents)
+        var value=homeBar.getBMLs();
+        commit('setBMLs',value)
     },
     getErW({commit}){
-        var contents=homeBar.getErW();
-        commit('setErW',contents)
+        var value=homeBar.getErW();
+        commit('setErW',value)
     }
 }
 

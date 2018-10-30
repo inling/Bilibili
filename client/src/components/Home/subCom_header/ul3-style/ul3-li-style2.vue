@@ -1,5 +1,5 @@
 <template>
-    <li class="nav-item1"  @mouseover="setShowIn()" @mouseout="setShowOut()">
+    <li class="nav-item1"  @mouseover="setShowIn()" @mouseout="setShowOut()" @click="alterPage(pageIndex)">
         <router-link to="#">
             <div class="num-wrap">
                 <span>{{numWrap}}</span>
@@ -24,7 +24,12 @@
             },
             setShowOut(){
                 this.isShow=false;
+            },
+            alterPage(pageIndex){
+                pageIndex++;
+                this.$store.dispatch('global/getPageIndex',pageIndex);
             }
+            
         },
         created() {
             
@@ -32,7 +37,7 @@
         components:{
             ul4Style
         },
-        props:['numWrap','navName','subLis']      
+        props:['numWrap','navName','subLis','pageIndex']      
     })
 </script>
 

@@ -13,14 +13,13 @@
                 liTitle:'历史',
                 liText:'历史',
                 mesNum:0,
-                iface:'img/header/akari.jpg'
             }
         },
         methods:{
 
         },
         created(){
-
+            this.iface=this.$store.state.global.userInfo.niface;
         },
         components:{
             ul2LiStyle1,

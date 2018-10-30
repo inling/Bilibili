@@ -29,7 +29,7 @@
             ul1LiStyle2,
             ul1LiStyle3
         },
-        props:['liContent']
+        props:[]
     })    
 </script>
 <style>

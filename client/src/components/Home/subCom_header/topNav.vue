@@ -1,6 +1,6 @@
 <template>
     <div class="topNav">
-        <div class="menuBg"  :style="bgImage"></div>
+        <div class="menuBg"  :style="bgImages[pageIndex]"></div>
         <div class="menuMask"></div>
         <div class="menuWrapper bili-wrapper">
             <div class="menu-con1">
@@ -13,8 +13,8 @@
                 </transition>
             </div>
             <div class="menu-con3">
-                <ul2-style v-show="!islogin"></ul2-style>
-                <ul2-style2 v-show="islogin" :user="user"></ul2-style2>               
+                <ul2-style v-show="!isLogin"></ul2-style>
+                <ul2-style2 v-show="isLogin"></ul2-style2>               
             </div>
         </div>
     </div>
@@ -27,10 +27,15 @@
     export default({
         data(){
             return { 
-                isTouGaoShow:false,    
+                isTouGaoShow:false,   
+                bgImages:[]
             }
         },
         methods:{
+            getBgImages(){
+                this.$store.dispatch('bgImage/getBgImages');
+                this.bgImages=this.$store.state.bgImage.bgImages;
+            },
             setMouseOver(){
                 this.isTouGaoShow=true;
             },
@@ -39,7 +44,7 @@
             },
         },
         created(){
-
+            this.getBgImages();
         },
         components:{
             ul1Style,
@@ -47,7 +52,15 @@
             ul2Style2,
             ul6Style
         },
-        props:['islogin','user','bgImage']
+        computed:{
+            pageIndex(){
+                return this.$store.getters['global/pageIndex'];
+            },
+            isLogin(){
+                return this.$store.getters['global/isLogin']
+            }
+        },
+        props:['user']
     })
 </script>
 

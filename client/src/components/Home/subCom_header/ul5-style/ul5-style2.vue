@@ -39,7 +39,7 @@
 <style scoped>
     .ul5-style{
         position: absolute;
-        left: -126px;
+        left: -163px;
         top: 42px;
         background-color: #fff;
         width: 320px;
@@ -52,9 +52,6 @@
     .ul5-style ul{
         padding-top:10px;
         padding-bottom: 5px;
-    }
-    .ul5-style .read-more-grp .mr{
-        margin-right: 12px;
     }
     .ul5-style .read-more-grp{
         display: flex;

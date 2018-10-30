@@ -1,5 +1,5 @@
 <template>
-    <div class="middleNav" :style="bgImage">
+    <div class="middleNav" :style="bgImages[pageIndex]">
         <div class="head-content bili-wrapper">
             <div class="search">
                 <form class="searchform">
@@ -10,7 +10,7 @@
                     <span>排行榜</span>
                 </router-link>
             </div>
-            <router-link to="#" :style="bgImageIcon"></router-link>
+            <router-link to="#" :style="bgImageIcon[pageIndex]"></router-link>
         </div>
     </div>
 </template>
@@ -18,16 +18,31 @@
     export default({
         data(){
             return {
-
+                bgImages:[],
+                bgImageIcon:[],
             }
         },
         methods:{
-
+            getBgImages(){
+                this.$store.dispatch('bgImage/getBgImages');
+                this.bgImages=this.$store.state.bgImage.bgImages;
+            },
+            getBgImageIcon(){
+                this.$store.dispatch('bgImage/getBgImageIcon');
+                this.bgImageIcon=this.$store.state.bgImage.bgImageIcon;
+            },
+            
         },
         created(){
-
+            this.getBgImages();
+            this.getBgImageIcon();        
         },
-        props:['bgImage','bgImageIcon','placeholder']
+        computed:{
+            pageIndex(){
+                return this.$store.getters['global/pageIndex'];
+            }
+        },
+        props:['placeholder']
     })
 </script>
 <style scoped>

@@ -10,29 +10,29 @@ const getters={
 }
 
 const mutations={
-    setNavlists(state,contents){
-        state.navlists=contents;
+    setNavlists(state,value){
+        state.navlists=value;
     },
-    setSideNavlists(state,contents){
-        state.sideNavlists=contents;
+    setSideNavlists(state,value){
+        state.sideNavlists=value;
     },
-    setRGiflist(state,contents){
-        state.rGiflist=contents;
+    setRGiflist(state,value){
+        state.rGiflist=value;
     }
 }
 
 const actions={
     getNavlists({commit}){
-        var contents=category.getNavlists();
-        commit('setNavlists',contents);
+        var value=category.getNavlists();
+        commit('setNavlists',value);
     },
     getSideNavlists({commit}){
-        var contents=category.getSideNavlists();
-        commit('setSideNavlists',contents);
+        var value=category.getSideNavlists();
+        commit('setSideNavlists',value);
     },
     getRGiflist({commit}){
-        var contents=category.getRGiflist();
-        commit('setRGiflist',contents);
+        var value=category.getRGiflist();
+        commit('setRGiflist',value);
     }
 }
 

@@ -1,7 +1,7 @@
 <template>
     <div class="appHeader">
-        <top-nav :islogin="islogin" :user="user" :bgImage="bgImages[index]"></top-nav>
-        <middle-nav :bgImage="bgImages[index]" :bgImageIcon="bgImageIcon[index]" :placeholder="placeholder"></middle-nav>
+        <top-nav></top-nav>
+        <middle-nav :placeholder="placeholder"></middle-nav>
         <bottom-nav></bottom-nav>
     </div>
 </template>
@@ -12,29 +12,8 @@
     import bottomNav from '@/components/Home/subCom_header/bottomNav.vue';
     export default({
         data(){
-            return {
-                islogin:true,
-                user:{
-                    iface:"img/header/noface.gif",
-                },          
-                bgImages:[
-                    {backgroundImage:`url(/img/header/h-1.png)`},
-                    {backgroundImage:`url(/img/header/h-7.png)`},
-                    {backgroundImage:`url(/img/header/h-3.png)`},
-                    {backgroundImage:`url(/img/header/h-4.png)`},
-                    {backgroundImage:`url(/img/header/h-5.png)`},
-                    {backgroundImage:`url(/img/header/h-6.png)`},
-                ],
-                bgImageIcon:[
-                    {backgroundImage:`url(/img/header/h-1-icon.png)`},
-                    {backgroundImage:`url(/img/header/h-7-icon.png)`},
-                    {backgroundImage:`url(/img/header/h-3-icon.png)`},
-                    {backgroundImage:`url(/img/header/h-4-icon.png)`},
-                    {backgroundImage:`url(/img/header/h-5-icon.png)`},
-                    {backgroundImage:`url(/img/header/h-6-icon.png)`},
-                ],
+            return {      
                 placeholder:'姬雏MV：震撼灵魂的lemon',
-                index:0
             }
         },
         methods:{

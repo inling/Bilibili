@@ -33,7 +33,6 @@
         },
         created() {
             this.getErW();
-            console.log(this.erW);
         },
         components:{
 
