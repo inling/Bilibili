@@ -35,7 +35,6 @@
 
         },
         components:{
-
         },
         props:[]
     })    
