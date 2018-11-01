@@ -13,8 +13,12 @@
         <div class="back-top bili-icon"></div>
         <div class="app-download">
             <router-link to="#">
-                <div id="elevator-mobile-app" class="app-icon"></div>
-                <div class="app-tips-icon"></div>
+                <div id="elevator-mobile-app" class="app-icon" :style="imgPosition"  @mouseover="setMouseOver" @mouseout="setMouseOut"></div>
+                <transition name="download-client">
+                    <div v-show="downloadIsShow">
+                        <div class="app-tips-icon"></div>
+                    </div>                   
+                </transition>
             </router-link>
         </div>
     </div>
@@ -45,7 +49,9 @@
                     {sortindex:15,title:'TV剧'},
                     {sortindex:16,title:'影视'},
                     {sortindex:17,title:'纪录片'} 
-                ]
+                ],
+                downloadIsShow:false,
+                imgPosition:{'background-position-x':80}
             }
         },
         methods:{
@@ -60,13 +66,32 @@
                 }else{
                     this.isTop=false;
                 }
+            },
+            setMouseOver(){
+                console.log(11)
+                this.downloadIsShow=true;
+                this.setImageDyna()
+            },
+            setMouseOut(){
+                this.downloadIsShow=false;
+            },
+            setImageDyna(){
+                var arr1=[0,80,160,240,320,400,480,560];
+                var i=0;
+                var self=this;
+                setInterval(()=>{
+                    self.imgPosition['background-position-x']=arr1[i];
+                    i++;
+                },100)
             }
         },
         created(){
 
         },
         mounted() {
-            window.addEventListener('scroll',this.handleScroll)
+            this.handleScroll();
+            window.addEventListener('scroll',this.handleScroll);
+            this.setImageDyna();
         },
         destroyed() {
             window.removeEventListener('scroll',this.handleScroll)
@@ -186,6 +211,28 @@
         left:-15px;
         width:80px;
         height:80px;
-        background-image: url()
+        background-image: url(/img/app-download.png)
+    }
+    .elevator-module .app-download .app-tips-icon{
+        position: absolute;
+        left:-110px;
+        top:-20px;
+        width:106px;
+        height:44px;
+        background-image: url(/img/app-download-tips.png);
+        opacity: 1;
+    }
+    .download-client-enter-active{
+        transition: all .3s linear;
+    }
+    .download-client-leave-active{
+
+        transition: all .3s linear;
+    }
+    .download-client-enter{
+        opacity: 0;
+    }
+    .download-client-leave-to{
+        opacity: 0;
     }
 </style>
