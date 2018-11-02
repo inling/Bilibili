@@ -2,37 +2,25 @@
     <div class="appWrapper">
         <div style="width:980px;height:260px;margin:0 auto" id="chief_recommend">chief_recommend</div>
         <div style="width:980px;height:228px;margin:0 auto" id="home_popularize">推广</div>
-        <div style="width:980px;height:511px;margin:0 auto" id="bili_live">live</div>
-        <div style="width:980px;height:485px;margin:0 auto" id="bili_audio">bili_audio</div>
-        <div style="width:980px;height:1014px;margin:0 auto" id="bili_bangumi">bili_bangumi</div>
-        <div style="width:980px;height:411px;margin:0 auto" id="bili_douga">bili_douga</div>
-        <div style="width:980px;height:830px;margin:0 auto" id="bili_guochuang">bili_guochuang</div>
-        <div style="width:980px;height:411px;margin:0 auto" id="bili_music">bili_music</div>
-        <div style="width:980px;height:411px;margin:0 auto" id="bili_dance">bili_dance</div>
-        <div style="width:980px;height:411px;margin:0 auto" id="bili_game">bili_game</div>
-        <div style="width:980px;height:411px;margin:0 auto" id="bili_technology">bili_technology</div>
-        <div style="width:980px;height:411px;margin:0 auto" id="bili_life">bili_life</div>
-        <div style="width:980px;height:411px;margin:0 auto" id="bili_movie">bili_movie</div>
-        <div style="width:980px;height:411px;margin:0 auto" id="bili_cinephile">bili_cinephile</div>
-        <div style="width:980px;height:411px;margin:0 auto" id="bili_fashion">bili_fashion</div>
-        <div style="width:980px;height:411px;margin:0 auto" id="bili_kichiku">bili_kichiku</div>
-        <div style="width:980px;height:411px;margin:0 auto" id="bili_teleplay">bili_teleplay</div>
-        <div style="width:980px;height:411px;margin:0 auto" id="bili_ent">bili_ent</div>
-        <div style="width:980px;height:411px;margin:0 auto" id="bili_documentary">bili_documentary</div>
-        <div style="width:980px;height:411px;margin:0 auto" id="bili_ad">bili_ad</div>
-        <div style="width:980px;height:411px;margin:0 auto" id="special_recommend">special_recommend</div>
+        <div v-for="(item,i) in modules" :key="i"  :id="item.id" :sortindex="item.sortindex">{{item.id}}</div>
+        <div  id="special_recommend">special_recommend</div>
     </div>
 </template>
 <script>
     export default({
         data(){
-            return{}
+            return{
+                modules:[]
+            }
         },
         methods:{
-
+            getModules(){
+                this.$store.dispatch('elevator/getModules');
+                this.modules=this.$store.state.elevator.modules;
+            }
         },
         created() {
-
+            this.getModules();
         },
         components:{
         },
@@ -51,32 +39,78 @@
     }
     .appWrapper #bili_live{
         padding-bottom: 30px;
+        width:980px;height:511px;margin:0 auto
     }
     .appWrapper #bili_audio{
         padding-bottom: 30px;
+        width:980px;height:485px;margin:0 auto
     }
     .appWrapper #bili_bangumi{
         padding-bottom: 30px;
+        width:980px;height:1014px;margin:0 auto
     }
     .appWrapper #bili_douga{
         padding-bottom: 30px;
+        width:980px;height:411px;margin:0 auto
     }
     .appWrapper #bili_guochuang{
         padding-bottom: 30px;
+        width:980px;height:830px;margin:0 auto
     }
     .appWrapper #bili_music{
         padding-bottom: 30px;
+        width:980px;height:411px;margin:0 auto
     }
     .appWrapper #bili_dance{
         padding-bottom: 30px;
+        width:980px;height:411px;margin:0 auto
     }
     .appWrapper #bili_game{
         padding-bottom: 30px;
+        width:980px;height:411px;margin:0 auto
     }
     .appWrapper #bili_technology{
         padding-bottom: 30px;
+        width:980px;height:411px;margin:0 auto
     }
     .appWrapper #bili_life{
         padding-bottom: 30px;
+        width:980px;height:411px;margin:0 auto
+    }
+    .appWrapper #bili_movie{
+        padding-bottom: 30px;
+        width:980px;height:411px;margin:0 auto
+    }
+    .appWrapper #bili_cinephile{
+        padding-bottom: 30px;
+        width:980px;height:411px;margin:0 auto
+    }
+    .appWrapper #bili_fashion{
+        padding-bottom: 30px;
+        width:980px;height:411px;margin:0 auto
+    }
+    .appWrapper #bili_kichiku{
+        padding-bottom: 30px;
+        width:980px;height:411px;margin:0 auto
+    }
+    .appWrapper #bili_teleplay{
+        padding-bottom: 30px;
+        width:980px;height:411px;margin:0 auto
+    }
+    .appWrapper #bili_ent{
+        padding-bottom: 30px;
+        width:980px;height:411px;margin:0 auto
+    }
+    .appWrapper #bili_documentary{
+        padding-bottom: 30px;
+        width:980px;height:411px;margin:0 auto
+    }
+    .appWrapper #bili_ad{
+        padding-bottom: 30px;
+        width:980px;height:411px;margin:0 auto
+    }
+    .appWrapper #special_recommend{
+        padding-bottom: 30px;
+        width:980px;height:235px;margin:0 auto
     }
 </style>

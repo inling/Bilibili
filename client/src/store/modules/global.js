@@ -6,6 +6,12 @@ const state={
         iface:'img/header/noface.gif',
         niface:'img/header/akari.jpg'
     },
+    elevator:{
+        isEleMaskShow:false,
+        isTopZIndex:false,
+        isOpen:false
+    }
+    
 }
 
 const getters={ 
@@ -14,6 +20,15 @@ const getters={
     },
     isLogin:function(state){
         return state.isLogin;
+    },
+    isEleMaskShow:function(state){
+        return state.elevator.isEleMaskShow;
+    },
+    isTopZIndex:function(state){
+        return state.elevator.isTopZIndex;
+    },
+    isOpen:function(state){
+        return state.elevator.isOpen;
     }
 }
 
@@ -23,7 +38,16 @@ const mutations={
     },
     setIsLogin(state,value){
         state.isLogin=value; 
-    }
+    },
+    setIsEleMaskShow(state,value){
+        state.elevator.isEleMaskShow=value;
+    },
+    setIsTopZIndex(state,value){
+        state.elevator.isTopZIndex=value;
+    },
+    setIsOpen(state,value){
+        state.elevator.isOpen=value;
+    },
 }
 
 const actions={
@@ -33,6 +57,15 @@ const actions={
     getIsLogin({commit},value){
         commit('setIsLogin',value)
     },
+    getIsEleMaskShow({commit},value){
+        commit('setIsEleMaskShow',value)
+    },
+    getIsTopZIndex({commit},value){
+        commit('setIsTopZIndex',value)
+    },
+    getIsOpen({commit},value){
+        commit('setIsOpen',value)
+    }
 }
 
 export default({
