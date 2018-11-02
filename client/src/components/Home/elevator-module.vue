@@ -173,10 +173,6 @@
                     }    
                 });
             },
-            //追随鼠标滚轮事件
-            followScroll(){
-
-            },
             //追随元素位置,调到可见位置
             followEleView(e){
                 if(this.clickToTimer){
@@ -209,9 +205,23 @@
                         document.body.scrollTop = document.documentElement.scrollTop = scrollTop;
                         self.clickToTimer = requestAnimationFrame(fn);
                     }             
-                });
-                
-            }
+                });       
+            },
+            //追随鼠标滚轮事件
+            followScroll(){
+                var s=document.querySelectorAll('.appWrapper div[sortindex]');
+                var stop=document.body.scrollTop = document.documentElement.scrollTop;
+                var has=false;
+                for(var i=0;i<s.length;i++){
+                    var dis=s[i].offsetTop-stop;
+                    if(180<dis&&dis<220){
+                        var id=s[i].id;
+                        var btn=document.querySelector(`[oppositeDivId=${id}]`);
+                        this.current=btn.getAttribute('sortindex');
+                        has=true;
+                    }
+                }
+            },
             
         },
         computed:{
@@ -227,10 +237,13 @@
         },
         mounted() {
             this.handleScroll();
+            this.followScroll();
             window.addEventListener('scroll',this.handleScroll);
+            window.addEventListener('scroll',this.followScroll);       
         },
         destroyed() {
             window.removeEventListener('scroll',this.handleScroll)
+            window.removeEventListener('scroll',this.followScroll)
         },
     })
 </script>
