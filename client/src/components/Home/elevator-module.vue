@@ -214,12 +214,16 @@
                 var has=false;
                 for(var i=0;i<s.length;i++){
                     var dis=s[i].offsetTop-stop;
-                    if(180<dis&&dis<220){
+                    var oheight=s[i].offsetHeight;
+                    if((180<dis&&dis<220)||(Math.abs(dis)<(oheight-200)&&(Math.abs(dis)>0))){
                         var id=s[i].id;
                         var btn=document.querySelector(`[oppositeDivId=${id}]`);
                         this.current=btn.getAttribute('sortindex');
                         has=true;
                     }
+                }
+                if(has==false){
+                    this.current=-1;
                 }
             },
             
