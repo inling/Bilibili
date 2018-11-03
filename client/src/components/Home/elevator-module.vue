@@ -4,7 +4,7 @@
             <div class="tips-img"></div>
         </div>
         <div class="nav-list">
-            <div v-for="(item,i) in modules" :key="i" :sortindex='item.sortindex' :oppositeDivId="item.id" class="item sortable" @click="itemClick(i);followEleView($event)" :class="{on:i==current}" >{{item.title}}</div>
+            <div v-for="(item,i) in modules" :key="i" :sortindex='item.sortindex' :oppositeDivId="item.id" class="item sortable" @click="!isOpen&&itemClick(i);!isOpen&&followEleView($event)" :class="{on:i==current,select:moveDiv.canMove&&i==current}" @mousedown="isOpen&&setmousedown($event)" @mouseup="isOpen&&setmouseup()">{{item.title}}</div>
             <div class="item customize" @click="setEleMask">
                 <i class="bili-icon"></i>排序
             </div>
@@ -42,8 +42,15 @@
                     x:0,                                                //背景图定位值
                 },
                 clickToTimer:null,
-                clickToTop:null
-                                                               
+                clickToTop:null,
+                moveDiv:{       //导航栏拖动属性
+                    catchedBox:'',
+                    temNode:'',
+                    canMove:false,
+                    offsetX:0,
+                    offsetY:0,
+                    clientY:0
+                }                                                              
             }
         },
         methods:{
@@ -152,6 +159,14 @@
                     this.$store.dispatch('global/getIsEleMaskShow',false);
                 else
                     this.$store.dispatch('global/getIsEleMaskShow',true);
+
+                if(isOpen){
+                    window.addEventListener('scroll',this.handleScroll)
+                    this.followScroll();
+                }else{
+                    window.removeEventListener('scroll',this.handleScroll)
+                    this.current=-1;                
+                }
                 
             },
             //视图移到顶部
@@ -215,17 +230,66 @@
                 for(var i=0;i<s.length;i++){
                     var dis=s[i].offsetTop-stop;
                     var oheight=s[i].offsetHeight;
-                    if((180<dis&&dis<220)||(Math.abs(dis)<(oheight-200)&&(Math.abs(dis)>0))){
+                    if((180<dis&&dis<220)||(Math.abs(dis)<(oheight-100)&&(Math.abs(dis)>=0))){
                         var id=s[i].id;
                         var btn=document.querySelector(`[oppositeDivId=${id}]`);
                         this.current=btn.getAttribute('sortindex');
                         has=true;
+                        break;
                     }
                 }
                 if(has==false){
                     this.current=-1;
                 }
             },
+            //判断是否按住左键
+            setmousedown(e){
+                this.moveDiv.catchedBox=e.target;
+                this.moveDiv.canMove=true;
+                this.moveDiv.offsetX=e.offsetX;
+                this.moveDiv.offsetY=e.offsetY;
+                this.moveDiv.catchedBox.className='item sortable on select';
+                this.createTemEle();
+                window.onmousemove=(e)=>{
+                    return this.catchBox(e);
+                }
+            },
+            setmouseup(){
+                if(this.moveDiv.canMove){
+                    this.moveDiv.canMove=false;         
+                    this.replaceNode();
+                    this.moveDiv.catchedBox.className='item sortable';
+                    window.removeEventListener('mousemove',this.catchBox)
+                }
+            },
+            
+            //抓取拖动导航栏
+            catchBox(e){
+                if(this.moveDiv.canMove){
+                    //获取鼠标距离顶部的距离
+                    this.moveDiv.clientY=e.clientY;
+                    //页面卷起的高度
+                    var scrollTop = document.body.scrollTop || document.documentElement.scrollTop;
+                    var navlist=document.querySelector('.nav-list');
+                    //navlist距离顶端的距离
+                    var navToTop=navlist.offsetTop;
+                    //获取鼠标的y坐标
+                    var top=e.clientY-this.moveDiv.offsetY-navToTop-15;
+                    this.moveDiv.catchedBox.style.top=top+'px';
+                    console.log(11)
+                }             
+            },
+            //创建新元素
+            createTemEle(){
+                this.moveDiv.temNode=document.createElement('div');
+                this.moveDiv.temNode.className="item sortable";
+                var navBox=document.querySelector('.nav-list');
+                navBox.insertBefore(this.moveDiv.temNode,this.moveDiv.catchedBox.nextSibling);
+            },
+            replaceNode(){
+                 var navBox=document.querySelector('.nav-list');
+                 navBox.removeChild(this.moveDiv.temNode);
+            }
             
         },
         computed:{
@@ -239,11 +303,17 @@
         created(){
             this.getModules();
         },
-        mounted() {
+        mounted() {         
             this.handleScroll();
             this.followScroll();
             window.addEventListener('scroll',this.handleScroll);
-            window.addEventListener('scroll',this.followScroll);       
+            window.addEventListener('scroll',this.followScroll);      
+            window.onmouseup=()=>{
+                return this.setmouseup();
+            }
+            if(this.isOpen){
+                this.current=-1;   
+            }
         },
         destroyed() {
             window.removeEventListener('scroll',this.handleScroll)
@@ -316,6 +386,11 @@
         user-select: none;
         font-size: 12px;
     }
+    .elevator-module .item.select{
+        position: absolute;
+        z-index:1;
+    }
+
     .elevator-module .item:hover{
         background-color: #00a1d6;
         color: #fff;
