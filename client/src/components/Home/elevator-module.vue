@@ -161,10 +161,10 @@
                     this.$store.dispatch('global/getIsEleMaskShow',true);
 
                 if(isOpen){
-                    window.addEventListener('scroll',this.handleScroll)
+                    window.addEventListener('scroll',this.followScroll)
                     this.followScroll();
                 }else{
-                    window.removeEventListener('scroll',this.handleScroll)
+                    window.removeEventListener('scroll',this.followScroll)
                     this.current=-1;                
                 }
                 
