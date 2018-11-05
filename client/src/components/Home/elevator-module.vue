@@ -187,6 +187,7 @@
                         cancelAnimationFrame(self.clickToTop);
                     }    
                 });
+                window.addEventListener('scroll',this.followScroll);   
             },
             //追随元素位置,调到可见位置
             followEleView(e){
