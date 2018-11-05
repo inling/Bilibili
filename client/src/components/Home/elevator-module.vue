@@ -225,7 +225,7 @@
             //追随鼠标滚轮事件
             followScroll(){
                 var s=document.querySelectorAll('.appWrapper div[sortindex]');
-                var stop=document.body.scrollTop = document.documentElement.scrollTop;
+                var stop=document.body.scrollTop;// = document.documentElement.scrollTop;
                 var has=false;
                 for(var i=0;i<s.length;i++){
                     var dis=s[i].offsetTop-stop;
