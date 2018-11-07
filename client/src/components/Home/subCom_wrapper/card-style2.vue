@@ -30,37 +30,38 @@
                     'background-position': '-320px -90px',
                     'background-size': '1600px'
                 },
-                axis:{
+                axios:{
                     x:0,
                     y:0
                 },
-                y:0,
                 progress:`width:0%`
             }
         },
         methods:{
             setMousemove(e){
-                var cx=e.offsetX;
-                this.progress=`width:${cx*(100/160)}%`
-                this.axis.x = e.offsetX//e.clientX-e.target.offsetLeft;
-                
-                var n=Math.ceil()
+                if(e.target.className.indexOf('mask-video')!=-1){
+                    var cx=e.offsetX;
+                    this.progress=`width:${cx*(100/160)}%`
 
+                    
+                    //视频
+                    var picNum=Math.floor(this.spreadCard.m/6);
+                    var line=picNum/10-1;
+                    var oneTimeCX=Math.floor(160/(picNum-1));
 
-                var tem=160*cx;
-                if(tem%1440==0){
-                    this.y+=90;
-                    this.coverStyle['background-position']=`-${160*cx}px ${this.y}px`;
+                    var fen=Math.floor(cx/oneTimeCX);
+                    if(fen>0){
+                        var x=160*fen;
+                        var beishu=Math.floor(x/1440);
+                        var y=beishu*90;
+                        if(x>1440)
+
+                            x=x-Math.floor(x/1440)*1440-160;
+
+                        this.coverStyle['background-position']=`-${x}px -${y}px`
+                    }
+
                 }
-
-
-
-                var num=Math.floor(this.spreadCard.m);
-                var line=Math.floor(num/10);
-                var linex=Math.floor(num%10);
-
-
-                console.log(this.axis.x,this.axis.y)
             }
         },
         created() {

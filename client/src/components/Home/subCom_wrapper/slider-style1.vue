@@ -128,6 +128,7 @@
     z-index: 3;
     bottom: 6px;
     right: 20px;
+    cursor: pointer;
   }
 
 

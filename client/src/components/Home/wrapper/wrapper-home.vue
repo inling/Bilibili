@@ -20,7 +20,22 @@
                     <cardStyle2 v-for="(item,i) in spreadCards" :key="i" :spreadCard="item"></cardStyle2>
                 </div>
             </div>
-            <div class="r-content"></div>
+            <div class="r-content">
+                <div class="online">
+                    <router-link to="#" target="_blank" title="在线观看：5331721">在线人数：3845220
+                    </router-link>
+                    <em></em>
+                    <router-link to="#" target="_blank">
+                    最新投稿：51995
+                    </router-link>
+                </div>
+                <div  class="adpos">
+                    <router-link to="#">
+                        <img src="img/video/7.jpg" alt="" width="260" height="150" class="pic">
+                        <img src="img/video/cm_2.png" class="gg-pic">
+                    </router-link>
+                </div>
+            </div>
         </div>
 
 
@@ -41,14 +56,14 @@
                 modules:[],
                 homeCards:[],
                 spreadCards:[
-            {src:'https:\/\/i0.hdslb.com/bfs/archive/ca4f62351da521665e452280f9cb3c5b6b6481fb.jpg@160w_100h.webp',
-            bsrc:'https:\/\/i3.hdslb.com/bfs/videoshot/61156441.jpg@.webp?vsign=c356cf04a8471bbc19e73fee5b2bdf2742735c74&ver=107779571',title:'这是牛仔骨最好吃的做法，不服来试！【韩式辣牛仔骨锅】',dur:'06:21',m:'381'},
-            {src:'https://i0.hdslb.com/bfs/archive/avsas_i181106ws10wjfpg0722x3tb5by8aqpx_0023.jpg@160w_100h.webp',
-            bsrc:'https://i3.hdslb.com/bfs/videoshot/62144617.jpg@.webp?vsign=f87773cb3870bea62f66acb96d60adfa169d69ad&ver=108428019',title:'他和陈小春开了家网红店',dur:'03:32',m:'212'},
-            {src:'https://i0.hdslb.com/bfs/archive/dae7d5ac0d4b386ed255d6251cab6360fbf21ccd.jpg@160w_100h.webp',
-            bsrc:'https://i3.hdslb.com/bfs/videoshot/61880456.jpg@.webp?vsign=29f42aa98ced5a985b5183271cff3312fb7db979&ver=108244336',title:'一口气用八种声音唱《霜雪千年》',dur:'00:32',m:'32'},
-            {src:'https://i0.hdslb.com/bfs/archive/8e311f65bf1ef6780843124dbff032a261b49485.jpg@160w_100h.webp',
-            bsrc:'https://i3.hdslb.com/bfs/videoshot/62066355.jpg@.webp?vsign=f7593e2b7ef450499b8ffb2614bb577cd052f1ea&ver=108387365',title:'【高达狗血史】阿姆罗一出场就死 惨遭电影化的高达',dur:'06:56',m:'416'}
+            {src:'img/video/1.jpg@160w_100h.webp',
+            bsrc:'img/video/61156441.jpg@.webp',title:'这是牛仔骨最好吃的做法，不服来试！【韩式辣牛仔骨锅】',dur:'06:21',m:'381'},
+            {src:'img/video/2.jpg@160w_100h.webp',
+            bsrc:'img/video/62144617.jpg@.webp',title:'他和陈小春开了家网红店',dur:'03:32',m:'212'},
+            {src:'img/video/3.jpg@160w_100h.webp',
+            bsrc:'img/video/61880456.jpg@.webp',title:'一口气用八种声音唱《霜雪千年》',dur:'00:32',m:'32'},
+            {src:'img/video/4.jpg@160w_100h.webp',
+            bsrc:'img/video/62066355.jpg@.webp',title:'【高达狗血史】阿姆罗一出场就死 惨遭电影化的高达',dur:'06:56',m:'416'}
                 ]    
             }
         },
@@ -64,6 +79,8 @@
         },
         created() {
             this.getModules();
+        },
+        mounted(){
             this.getHomeCards();
         },
         components:{
@@ -111,6 +128,50 @@
     .wrapper-home #home_popularize .storey-box{
         height: 168px;
         overflow: hidden;
+    }
+    .r-content{
+        width: 260px;
+        float: right;
+    }
+    .r-content .online{
+        position: relative;
+        height: 34px;
+        line-height: 34px;
+        padding: 0 10px;
+        border-radius: 4px;
+        text-align: center;
+        background: #e5e9ef;
+        white-space: nowrap;
+    }
+    .r-content .online a{
+            color: #6d757a;
+            font-size: 12px;
+    }
+    .r-content .online em{
+        display: inline-block;
+        border-left: 1px solid #b8c0cc;
+        height: 10px;
+        line-height: 10px;
+        margin: 12px 15px 0;
+        vertical-align: top;
+    }
+    .r-content .adpos{
+        margin-top: 10px;
+        border-radius: 4px;
+        overflow: hidden;
+        width: 260px;
+        height: 150px;
+        position: relative;
+    }
+    .r-content .adpos img{
+        border: none;
+        vertical-align: middle;
+            cursor: pointer;
+    }
+    .r-content .adpos .gg-pic {
+        position: absolute;
+        bottom: 2px;
+        left: 2px;
     }
     .wrapper-home #bili_live{
         padding-bottom: 30px;
