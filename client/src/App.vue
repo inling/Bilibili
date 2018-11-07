@@ -23,7 +23,7 @@
   }
   .bili-icon{
     display: inline-block;
-    background-image: url('/img/icons.png');
+    background-image: url('/img/icons.png') !important;
   }
 
   .clear:after{
@@ -32,7 +32,7 @@
     clear: both;
     visibility: hidden;
   }
-
+  
   /*认证类别和会员图标*/
   .legalize-14-1,.legalize-14-2{
     background-image: url(/img/vipIcon.png);

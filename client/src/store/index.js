@@ -6,6 +6,7 @@ import category from './modules/header/category'
 import homeBar from './modules/header/homeBar'
 import userBar from './modules/header/userBar'
 import elevator from './modules/elevator/elevator'
+import recommand from './modules/wrapper/recommand'
 
 Vue.use(Vuex);
 
@@ -15,7 +16,9 @@ export default new Vuex.Store({
     modules:{
         global,
         bgImage,category,homeBar,userBar,          //header
-        elevator                                   //右侧栏
+        elevator,                                   //右侧栏
+        recommand
+
     },
     strict:debug
 });
