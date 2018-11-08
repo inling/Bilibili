@@ -10,7 +10,8 @@ const state={
         isEleMaskShow:false,
         isTopZIndex:false,
         isOpen:false
-    }
+    },
+    wrapperModule:'wrapper-home'
     
 }
 

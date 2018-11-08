@@ -26,6 +26,10 @@
     background-image: url('/img/icons.png') !important;
   }
 
+  .lazy-img{
+        background: url(/img/img_loading.png) 50% no-repeat;
+  }
+
   .clear:after{
     content: '';
     display: block;
@@ -33,6 +37,18 @@
     visibility: hidden;
   }
   
+  
+  .clearfix:before{
+      content: "";
+      display: table;
+  }
+
+  .clearfix::after{
+      content: '';
+      clear: both;
+      display:block;
+      overflow: hidden;
+  }
   /*认证类别和会员图标*/
   .legalize-14-1,.legalize-14-2{
     background-image: url(/img/vipIcon.png);

@@ -45,21 +45,21 @@
 
                     
                     //视频
-                    var picNum=Math.floor(this.spreadCard.m/6);
-                    var line=picNum/10-1;
-                    var oneTimeCX=Math.floor(160/(picNum-1));
+                    var picNum=this.spreadCard.m;
+                    var line=Math.ceil(picNum/10);
+                    picNum-=line;
+                    var oneTimeCX=Math.floor(160/picNum);
 
-                    var fen=Math.floor(cx/oneTimeCX);
-                    if(fen>0){
+                    console.log(picNum*160)
+                    var fen=Math.ceil(cx/oneTimeCX);
+
                         var x=160*fen;
-                        var beishu=Math.floor(x/1440);
+                        var beishu=Math.floor(x/1600);
                         var y=beishu*90;
-                        if(x>1440)
-
-                            x=x-Math.floor(x/1440)*1440-160;
-
+                        if(x>=1600)
+                            x=x-Math.floor(x/1600)*1600;
                         this.coverStyle['background-position']=`-${x}px -${y}px`
-                    }
+                    
 
                 }
             }

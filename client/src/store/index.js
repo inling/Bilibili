@@ -7,6 +7,8 @@ import homeBar from './modules/header/homeBar'
 import userBar from './modules/header/userBar'
 import elevator from './modules/elevator/elevator'
 import recommand from './modules/wrapper/recommand'
+import spread from './modules/wrapper/spread'
+import douga from './modules/wrapper/douga'
 
 Vue.use(Vuex);
 
@@ -17,8 +19,7 @@ export default new Vuex.Store({
         global,
         bgImage,category,homeBar,userBar,          //header
         elevator,                                   //右侧栏
-        recommand
-
+        recommand,spread,douga
     },
     strict:debug
 });

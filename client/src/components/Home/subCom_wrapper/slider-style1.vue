@@ -26,7 +26,6 @@
     export default {
         data(){
             return{
-                sliderContent:[],
                 sliderPara:{
                     sliderTimer:null,
                     ml:{'margin-left':0},
@@ -62,21 +61,17 @@
                 this.sliderPara.current=id;
                 this.sliderPara.mlValue=id*(-100);
                 this.sliderPara.ml['margin-left']=this.sliderPara.mlValue+'%';
-            },
-            getSliderContent(){
-                this.$store.dispatch('recommand/getSliderContent');
-                this.sliderContent=this.$store.state.recommand.sliderContent;
             }
         },
         created(){
-            this.getSliderContent();
         },
         mounted(){
             this.sliderAction();
         },
         components:{
 
-        }
+        },
+        props:['sliderContent']
     }
 </script>
 

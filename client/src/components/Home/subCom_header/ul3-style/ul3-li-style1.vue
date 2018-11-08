@@ -21,6 +21,7 @@
         created() {
             
         },
+
         props:['pageIndex']
     })
 </script>
@@ -54,5 +55,6 @@
         height: 48px;
         padding-top: 8px;
     }
+
 </style>
 

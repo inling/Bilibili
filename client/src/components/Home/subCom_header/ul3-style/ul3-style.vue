@@ -3,7 +3,7 @@
         <!--首页-->
         <ul3-li-style1></ul3-li-style1>
         <!--动画、番剧、国创。。。。。放映厅-->
-        <ul3-li-style2 v-for="(item,i) in navlists" :key="i" :navName="item.navName" :numWrap="item.numWrap" :subLis="item.subLis" :pageIndex="i"></ul3-li-style2>
+        <ul3-li-style2 v-for="(item,i) in navlists" :key="i" :navName="item.navName" :numWrap="item.numWrap" :subLis="item.subLis" :pageIndex="i" :class="{on:pageIndex==i+1}"></ul3-li-style2>
         <!--专栏,广场,直播,小黑屋-->
         <ul3-li-style3 v-for="(item,i) in sideNavlists" :key="i+15" :iname="item.iname" :sname="item.sname"></ul3-li-style3>
     </ul>
@@ -39,16 +39,34 @@
             ul3LiStyle2,
             ul3LiStyle3
         },
+        computed:{
+            pageIndex(){
+                return this.$store.getters['global/pageIndex'];
+            }
+        },
         props:[]
     })
 </script>
 
-<style scoped>
+<style>
     .ul3-style{
         position: relative;
         z-index: 200;
         height: 42px;
         color: #222;
     }   
+
+    
+    .ul3-style li.on .nav-name{
+        color: #00a1d6;
+    }
+    .ul3-style li.on::after{
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 2px;
+        background: #00a1d6;
+        bottom: -3px;
+    }
 </style>
 

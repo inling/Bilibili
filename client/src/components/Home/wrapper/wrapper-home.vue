@@ -1,16 +1,17 @@
 <template>
     <div class="wrapper-home">
-        <div style="width:980px;height:260px;margin:0 auto" id="chief_recommend">
+        <!--广告-->
+        <div id="chief_recommend">
             <!--轮播图模块-->
             <div class="slider-box">
-                <slider-style1></slider-style1>
+                <slider-style1 :sliderContent="sliderContent"></slider-style1>
             </div>
             <!---->
             <div class="recommand-module">
                 <cardStyle1 v-for="(item,i) in homeCards" :key="i" :homeCard="item"></cardStyle1>
             </div>
         </div>
-        <div style="width:980px;height:228px;margin:0 auto" id="home_popularize">
+        <div id="home_popularize">
             <div class="l-content">
                 <div class="headline clear">
                     <i class="icon-promote icon_t bili-icon"></i>
@@ -22,10 +23,10 @@
             </div>
             <div class="r-content">
                 <div class="online">
-                    <router-link to="#" target="_blank" title="在线观看：5331721">在线人数：3845220
+                    <router-link to="#" title="在线观看：5331721">在线人数：3845220
                     </router-link>
                     <em></em>
-                    <router-link to="#" target="_blank">
+                    <router-link to="#">
                     最新投稿：51995
                     </router-link>
                 </div>
@@ -38,10 +39,10 @@
             </div>
         </div>
 
-
-
-
-        <div v-for="(item,i) in modules" :key="i"  :id="item.id" :sortindex="item.sortindex">{{item.id}}</div>
+        <!--推广-->
+        <div v-for="(item,i) in modules" :key="i"  :id="item.id" :sortindex="item.sortindex">
+            <liveModule></liveModule>
+        </div>
         <div  id="special_recommend">special_recommend</div>
     </div>
 </template>
@@ -50,21 +51,14 @@
     import sliderStyle1 from '@/components/Home/subCom_wrapper/slider-style1.vue'
     import cardStyle1 from '@/components/Home/subCom_wrapper/card-style1.vue'
     import cardStyle2 from '@/components/Home/subCom_wrapper/card-style2.vue'
+    import liveModule from '@/components/Home/wrapper-module/live-module.vue'
     export default({
         data(){
             return{
                 modules:[],
                 homeCards:[],
-                spreadCards:[
-            {src:'img/video/1.jpg@160w_100h.webp',
-            bsrc:'img/video/61156441.jpg@.webp',title:'这是牛仔骨最好吃的做法，不服来试！【韩式辣牛仔骨锅】',dur:'06:21',m:'381'},
-            {src:'img/video/2.jpg@160w_100h.webp',
-            bsrc:'img/video/62144617.jpg@.webp',title:'他和陈小春开了家网红店',dur:'03:32',m:'212'},
-            {src:'img/video/3.jpg@160w_100h.webp',
-            bsrc:'img/video/61880456.jpg@.webp',title:'一口气用八种声音唱《霜雪千年》',dur:'00:32',m:'32'},
-            {src:'img/video/4.jpg@160w_100h.webp',
-            bsrc:'img/video/62066355.jpg@.webp',title:'【高达狗血史】阿姆罗一出场就死 惨遭电影化的高达',dur:'06:56',m:'416'}
-                ]    
+                spreadCards:[] ,
+                sliderContent:[]   
             }
         },
         methods:{
@@ -75,33 +69,58 @@
             getHomeCards(){
                 this.$store.dispatch('recommand/getHomeCards');
                 this.homeCards=this.$store.state.recommand.homeCards;
+            },
+            getSpreadCards(){
+                this.$store.dispatch('spread/getSpreadCards');
+                this.spreadCards=this.$store.state.spread.spreadCards;
+            },
+            getSliderContent(){
+                this.$store.dispatch('recommand/getSliderContent');
+                this.sliderContent=this.$store.state.recommand.sliderContent;
             }
         },
         created() {
             this.getModules();
+            this.getHomeCards();
+            this.getSpreadCards();
+            this.getSliderContent();
         },
         mounted(){
-            this.getHomeCards();
+            
         },
         components:{
             sliderStyle1,
             cardStyle1,
-            cardStyle2
+            cardStyle2,
+            liveModule
         },
         props:[]
     })    
 </script>
 
 <style>
-
+    @media screen and (max-width: 1400px){
+        .wrapper-home {
+            width: 980px !important;
+        }
+    }
+    .wrapper-home {
+        margin: 0 auto;
+        width: 1160px;
+    }
     .wrapper-home #chief_recommend{
         padding-bottom: 40px;
     }
     .wrapper-home #home_popularize{
         padding-bottom: 15px;
     }
+     @media screen and (max-width: 1400px){
+        .wrapper-home #home_popularize .l-content {
+            width: 720px !important;
+        }
+    }
     .wrapper-home #home_popularize .l-content{
-        width: 720px;
+        width: 900px;
         float: left;
     }
     .wrapper-home #home_popularize .l-content .headline{
@@ -175,79 +194,79 @@
     }
     .wrapper-home #bili_live{
         padding-bottom: 30px;
-        width:980px;height:511px;margin:0 auto
+        height:511px;margin:0 auto
     }
     .wrapper-home #bili_audio{
         padding-bottom: 30px;
-        width:980px;height:485px;margin:0 auto
+        height:485px;margin:0 auto
     }
     .wrapper-home #bili_bangumi{
         padding-bottom: 30px;
-        width:980px;height:1014px;margin:0 auto
+        height:1014px;margin:0 auto
     }
     .wrapper-home #bili_douga{
         padding-bottom: 30px;
-        width:980px;height:411px;margin:0 auto
+        height:411px;margin:0 auto
     }
     .wrapper-home #bili_guochuang{
         padding-bottom: 30px;
-        width:980px;height:830px;margin:0 auto
+        height:830px;margin:0 auto
     }
     .wrapper-home #bili_music{
         padding-bottom: 30px;
-        width:980px;height:411px;margin:0 auto
+        height:411px;margin:0 auto
     }
     .wrapper-home #bili_dance{
         padding-bottom: 30px;
-        width:980px;height:411px;margin:0 auto
+        height:411px;margin:0 auto
     }
     .wrapper-home #bili_game{
         padding-bottom: 30px;
-        width:980px;height:411px;margin:0 auto
+        height:411px;margin:0 auto
     }
     .wrapper-home #bili_technology{
         padding-bottom: 30px;
-        width:980px;height:411px;margin:0 auto
+        height:411px;margin:0 auto
     }
     .wrapper-home #bili_life{
         padding-bottom: 30px;
-        width:980px;height:411px;margin:0 auto
+        height:411px;margin:0 auto
     }
     .wrapper-home #bili_movie{
         padding-bottom: 30px;
-        width:980px;height:411px;margin:0 auto
+        height:411px;margin:0 auto
     }
     .wrapper-home #bili_cinephile{
         padding-bottom: 30px;
-        width:980px;height:411px;margin:0 auto
+        height:411px;margin:0 auto
     }
     .wrapper-home #bili_fashion{
         padding-bottom: 30px;
-        width:980px;height:411px;margin:0 auto
+        height:411px;margin:0 auto
     }
     .wrapper-home #bili_kichiku{
         padding-bottom: 30px;
-        width:980px;height:411px;margin:0 auto
+        height:411px;margin:0 auto
     }
     .wrapper-home #bili_teleplay{
         padding-bottom: 30px;
-        width:980px;height:411px;margin:0 auto
+        height:411px;margin:0 auto
     }
     .wrapper-home #bili_ent{
         padding-bottom: 30px;
-        width:980px;height:411px;margin:0 auto
+        height:411px;margin:0 auto
     }
     .wrapper-home #bili_documentary{
         padding-bottom: 30px;
-        width:980px;height:411px;margin:0 auto
+        height:411px;margin:0 auto
     }
     .wrapper-home #bili_ad{
         padding-bottom: 30px;
-        width:980px;height:411px;margin:0 auto
+        height:411px;margin:0 auto
     }
     .wrapper-home #special_recommend{
         padding-bottom: 30px;
-        width:980px;height:235px;margin:0 auto
+        height:235px;margin:0 auto
     }
 
     .slider-box{

@@ -2,9 +2,8 @@
   <div class="home">
     <home-header></home-header>
     <home-wrapper></home-wrapper>
-    <elevator-module></elevator-module>
+    <elevator-module v-show="pageIndex==0"></elevator-module>
     <elevator-mask></elevator-mask>
-    <div style="height:1000px;border:1px solid red;width:100%"></div>
   </div>
 </template>
 
@@ -22,6 +21,11 @@ export default {
     HomeWrapper,
     elevatorModule,
     elevatorMask
+  },
+  computed:{
+    pageIndex(){
+      return this.$store.getters['global/pageIndex']
+    }
   }
 }
 </script>

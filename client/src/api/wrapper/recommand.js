@@ -38,7 +38,21 @@ var _homeCards=[
     src:'img/video/6.jpg',
     upMaster:'up主：艾尔十六',
     playCount:'播放：7.2万',
-    href:'https://www.bilibili.com/video/av35353824/'}]
+    href:'https://www.bilibili.com/video/av35353824/'}
+    ,
+
+    {title:"【番声】先定一个小目标，比如说成为本子王丨每周GRIDMAN环节（第五集）",
+    src:'img/video/8.jpg',
+    upMaster:'up主：动漫低手咸鱼',
+    playCount:'播放：9.7万',
+    href:'https://www.bilibili.com/video/av35393971/'}
+    ,
+
+    {title:"【壁家讲坛】销量学入门01：兄弟，碟子要伐？",
+    src:'img/video/9.jpg',
+    upMaster:'up主：名作之壁吧',
+    playCount:'播放：1.7万',
+    href:'https://www.bilibili.com/video/av35449043/'}]
 
 export default({
     getSliderContent(){

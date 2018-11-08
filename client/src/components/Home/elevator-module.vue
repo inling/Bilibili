@@ -63,12 +63,14 @@
             },
             //滚轮事件
             handleScroll(){
+                if(this.pageIndex==0){
                 var scrollTop=window.pageYOffset||document.documentElement.scrollTop||document.body.scrollTop;
                 var offsetTop=document.getElementById('chief_recommend').offsetTop;
                 if(scrollTop>offsetTop){
                     this.isTop=true;
                 }else{
                     this.isTop=false;
+                }
                 }
             },
             //移入云出现
@@ -226,7 +228,7 @@
             //追随鼠标滚轮事件
             followScroll(){
                 var s=document.querySelectorAll('.appWrapper div[sortindex]');
-                var stop=document.body.scrollTop;// = document.documentElement.scrollTop;
+                var stop=document.body.scrollTop || document.documentElement.scrollTop;
                 var has=false;
                 for(var i=0;i<s.length;i++){
                     var dis=s[i].offsetTop-stop;
@@ -300,6 +302,9 @@
             isTopZIndex(){
                 return this.$store.getters['global/isTopZIndex']
             },
+            pageIndex(){
+                return this.$store.getters['global/pageIndex']
+            }
         },
         created(){
             this.getModules();
