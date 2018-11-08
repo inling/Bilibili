@@ -279,7 +279,6 @@
                     //获取鼠标的y坐标
                     var top=e.clientY-this.moveDiv.offsetY-navToTop-15;
                     this.moveDiv.catchedBox.style.top=top+'px';
-                    console.log(11)
                 }             
             },
             //创建新元素
