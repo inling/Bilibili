@@ -1,5 +1,5 @@
 <template>
-            <div class="player-box" >
+            <div class="player-box" v-show="isClose">
                 <div class="bilibili-player relative">
                     <div class="bilibili-player-area">
                         <!--头部-->
@@ -8,7 +8,7 @@
                                 <div class="bilibili-video-title">
                                     【谢拉】蜜月Un・Deux・Trois【Overidea】
                                 </div>
-                                <div class="bilibli-player-close">
+                                <div class="bilibli-player-close" @click="close">
                                    
                                 </div>
                             </div>
@@ -196,7 +196,8 @@
                     canMove:false,
                     offsetX:0,
                     offsetY:0
-                }
+                },
+                isClose:true
             }
         },
         methods:{
@@ -248,7 +249,7 @@
             },
             boxMove(){
                 if(this.boxMovePara.canMove){
-                    var top=window.event.clientY-this.boxMovePara.offsetY;
+                    var top=window.event.clientY-this.boxMovePara.offsetY+document.documentElement.scrollTop;
                     var left=window.event.clientX-this.boxMovePara.offsetX;
                     var box=document.querySelector('.player-box')
                     box.style.top=`${top}px`;
@@ -256,6 +257,10 @@
                 }
             },
             close(){
+                this.isClose=false;
+                document.queryCommandValue('.bilibili-player-video>video').stop();
+
+
                 
             }
         },
@@ -263,6 +268,14 @@
             
         },
         mounted(){
+            var playerbox=document.querySelector('.player-box');
+            var top=window.innerHeight/2-playerbox.clientHeight/2+document.documentElement.scrollTop;
+            var left=window.innerWidth/2-playerbox.clientWidth/2+document.documentElement.scrollLeft;
+            if(top<0) top=0;
+            if(left<0) left=0;
+            playerbox.style.top=`${top}px`;
+            playerbox.style.left=`${left}px`;
+
 
         }
     }
@@ -277,6 +290,7 @@
         width: 638px;
         height: 435px;
         position: absolute;
+        z-index:100000;
     }
     .bilibli-player-close{
         position: absolute;

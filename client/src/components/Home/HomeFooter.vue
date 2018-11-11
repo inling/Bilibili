@@ -1,5 +1,5 @@
 <template>
-    
+    <div class="appFooter"></div>
 </template>
 <script>
     export default({

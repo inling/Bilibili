@@ -11,7 +11,10 @@ const state={
         isTopZIndex:false,
         isOpen:false
     },
-    wrapperModule:'wrapper-home'
+    player:{
+        isPlayerOpen:false,
+        url:''
+    }
     
 }
 
@@ -49,6 +52,10 @@ const mutations={
     setIsOpen(state,value){
         state.elevator.isOpen=value;
     },
+    setPlayer(state,value){
+        state.player.isPlayerOpen=value.isPlayerOpen;
+        state.player.url=value.url;
+    }
 }
 
 const actions={
@@ -66,6 +73,9 @@ const actions={
     },
     getIsOpen({commit},value){
         commit('setIsOpen',value)
+    },
+    getPlayer({commit},value){
+        commit('setPlayer',value)
     }
 }
 
