@@ -9,6 +9,7 @@ import elevator from './modules/elevator/elevator'
 import recommand from './modules/wrapper/recommand'
 import spread from './modules/wrapper/spread'
 import douga from './modules/wrapper/douga'
+import player from './modules/wrapper/player'
 
 Vue.use(Vuex);
 
@@ -19,7 +20,7 @@ export default new Vuex.Store({
         global,
         bgImage,category,homeBar,userBar,          //header
         elevator,                                   //右侧栏
-        recommand,spread,douga
+        recommand,spread,douga,player
     },
     strict:debug
 });

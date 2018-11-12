@@ -1,13 +1,13 @@
 <template>
-    <div class="groom-module home-card">
-        <a :href="homeCard.href" target="_blank" :title="homeCard.title">
+    <div class="groom-module home-card" @click="openPlayer">
+        <router-link to="#" :title="homeCard.title"> <!--:href="homeCard.href" target="_blank"-->
             <img :src="homeCard.src" class="pic">
             <div class="card-mask">
                 <p class="title">{{homeCard.title}}</p>
                 <p class="author">{{homeCard.upMaster}}</p>
                 <p class="play">{{homeCard.playCount}}</p>
             </div>
-        </a>
+        </router-link>
     </div>
 </template>
 <script>
@@ -16,7 +16,17 @@
             return {}
         },
         methods:{
-
+            openPlayer(){
+                this.$store.dispatch('global/getPlayer',true);
+                console.log(this.$store)
+                //传入ID值
+                /*
+                -------------------
+                
+                
+                -------------------
+                */
+            }
         },
         created() {
             

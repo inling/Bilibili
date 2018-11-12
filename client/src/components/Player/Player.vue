@@ -1,12 +1,12 @@
 <template>
-            <div class="player-box" v-show="isClose">
+            <div class="player-box">
                 <div class="bilibili-player relative">
                     <div class="bilibili-player-area">
                         <!--头部-->
                         <div class="bilibili-player-area-header" @mousedown="setMousedown($event)" @mouseup="setMouseup">
                             <div class="bilibili-player-area-header-box">
                                 <div class="bilibili-video-title">
-                                    【谢拉】蜜月Un・Deux・Trois【Overidea】
+                                    {{data.title}}
                                 </div>
                                 <div class="bilibli-player-close" @click="close">
                                    
@@ -27,7 +27,7 @@
                             </div>
                             <!--video-->
                             <div class="bilibili-player-video" @mousemove="setScreenMove" @mouseout="setWrapMoveOut">
-                                <video src="video/61869533-1-6.mp4"  @click="setPlayState($event)"></video>
+                                <video :src="data.url"  @click="setPlayState($event)"></video>
                             </div>
 
                             <!--video控制条-->
@@ -52,7 +52,7 @@
                                             </div>
                                             <div class="bilibili-player-video-progress-detail" style="display:block">
                                                 <!--中间图-->
-                                                <div class="bilibili-player-video-progress-detail-img" style="margin-left: -80px; width: 160px; height: 90px; background-image: url(/img/video/61869533.jpg@.webp); background-position: -640px -180px;"></div>
+                                                <div class="bilibili-player-video-progress-detail-img" :style="progressImg"></div>
                                                 <!--时间-->
                                                 <div class="bilibili-player-video-progress-detail-time" style="margin-left: -22px;">03:13</div>
                                                 <div class="bilibili-player-video-progress-detail-sign">
@@ -197,7 +197,13 @@
                     offsetX:0,
                     offsetY:0
                 },
-                isClose:true
+                progressImg:{
+                    "margin-left":"-80px" ,
+                    "width": "160px", 
+                    "height": "90px",
+                    "background-image": "url(/img/video/61869533.jpg@.webp)",
+                    "background-position": "-640px -180px;"
+                }
             }
         },
         methods:{
@@ -257,17 +263,18 @@
                 }
             },
             close(){
-                this.isClose=false;
-                document.queryCommandValue('.bilibili-player-video>video').stop();
-
-
-                
-            }
+                this.$store.dispatch('global/getPlayer',false);
+                document.queryCommandValue('.bilibili-player-video>video').pause();               
+            },
         },
         created(){
             
         },
         mounted(){
+            //视频细节图
+            this.progressImg['background-image']=`url(${this.data.pic})`
+
+            //
             var playerbox=document.querySelector('.player-box');
             var top=window.innerHeight/2-playerbox.clientHeight/2+document.documentElement.scrollTop;
             var left=window.innerWidth/2-playerbox.clientWidth/2+document.documentElement.scrollLeft;
@@ -275,9 +282,8 @@
             if(left<0) left=0;
             playerbox.style.top=`${top}px`;
             playerbox.style.left=`${left}px`;
-
-
-        }
+        },
+        props:['data']
     }
 </script>
 
@@ -1040,5 +1046,6 @@
         white-space: nowrap;
         align-items: flex-end;
     }
+    
 </style>
 

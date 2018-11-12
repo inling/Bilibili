@@ -11,11 +11,7 @@ const state={
         isTopZIndex:false,
         isOpen:false
     },
-    player:{
-        isPlayerOpen:false,
-        url:''
-    }
-    
+    isPlayerOpen:false,    
 }
 
 const getters={ 
@@ -33,6 +29,9 @@ const getters={
     },
     isOpen:function(state){
         return state.elevator.isOpen;
+    },
+    isPlayerOpen:function(state){
+        return state.isPlayerOpen
     }
 }
 
@@ -53,8 +52,7 @@ const mutations={
         state.elevator.isOpen=value;
     },
     setPlayer(state,value){
-        state.player.isPlayerOpen=value.isPlayerOpen;
-        state.player.url=value.url;
+        state.isPlayerOpen=value;
     }
 }
 

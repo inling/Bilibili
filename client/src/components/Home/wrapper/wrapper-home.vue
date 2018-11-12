@@ -8,7 +8,7 @@
             </div>
             <!---->
             <div class="recommand-module">
-                <cardStyle1 v-for="(item,i) in homeCards" :key="i" :homeCard="item"></cardStyle1>
+                <cardStyle1 v-for="(item,i) in homeCards" :key="i" :homeCard="item" :videoId="item.v_id"></cardStyle1>
             </div>
         </div>
         <div id="home_popularize">
@@ -18,7 +18,7 @@
                     <span class="name">推广</span>
                 </div>
                 <div class="storey-box">
-                    <cardStyle2 v-for="(item,i) in spreadCards" :key="i" :spreadCard="item"></cardStyle2>
+                    <cardStyle2 v-for="(item,i) in spreadCards" :key="i" :spreadCard="item" :video-id='item.v_id'></cardStyle2>
                 </div>
             </div>
             <div class="r-content">

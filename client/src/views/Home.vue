@@ -4,7 +4,7 @@
     <home-wrapper></home-wrapper>
     <elevator-module v-show="pageIndex==0"></elevator-module>
     <elevator-mask></elevator-mask>
-    <player v-show="player.isPlayerOpen"></player>
+    <player v-show="player.isPlayerOpen" :data="player.data"></player>
   </div>
 </template>
 
@@ -21,10 +21,23 @@ export default {
   data(){
     return {
       player:{
-        isPlayerOpen:true,
-        url:''
+        data:{
+            url:'',
+            title:'',
+            pic:'',
+            picNum:''
+        }
       }
     }
+  },
+  methods:{
+    getVideo(){
+      this.$store.dispatch('player/getVideo');
+      this.player.data=this.$store.state.player.video;
+    }
+  },
+  created(){
+    this.getVideo()
   },
   components: {
     HomeHeader,
@@ -36,6 +49,9 @@ export default {
   computed:{
     pageIndex(){
       return this.$store.getters['global/pageIndex']
+    },
+    isPlayerOpen(){
+      return this.$store.getters['global/isPlayerOpen']
     }
   }
 }
