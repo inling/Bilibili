@@ -1,6 +1,6 @@
 <template>
-            <div class="player-box">
-                <div class="bilibili-player relative">
+            <div class="player-box"   v-show="isPlayerOpen">
+                <div class="bilibili-player relative"  v-if="isPlayerOpen">
                     <div class="bilibili-player-area">
                         <!--头部-->
                         <div class="bilibili-player-area-header" @mousedown="setMousedown($event)" @mouseup="setMouseup">
@@ -203,7 +203,8 @@
                     "height": "90px",
                     "background-image": "url(/img/video/61869533.jpg@.webp)",
                     "background-position": "-640px -180px;"
-                }
+                },
+                data:{}
             }
         },
         methods:{
@@ -264,26 +265,38 @@
             },
             close(){
                 this.$store.dispatch('global/getPlayer',false);
-                document.queryCommandValue('.bilibili-player-video>video').pause();               
+                //document.queryCommandValue('.bilibili-player-video>video').pause();               
+            },
+            getVideo(){
+                this.$store.dispatch('player/getVideo');
+                this.data=this.$store.state.player.video;
+            }
+        },
+        computed:{
+            isPlayerOpen(){
+                return this.$store.getters['global/isPlayerOpen']
             },
         },
         created(){
-            
+            this.getVideo();
         },
         mounted(){
+            console.log(111);
             //视频细节图
             this.progressImg['background-image']=`url(${this.data.pic})`
 
             //
             var playerbox=document.querySelector('.player-box');
-            var top=window.innerHeight/2-playerbox.clientHeight/2+document.documentElement.scrollTop;
-            var left=window.innerWidth/2-playerbox.clientWidth/2+document.documentElement.scrollLeft;
+            //var top=window.innerHeight/2-playerbox.clientHeight/2+document.documentElement.scrollTop;
+            var top=window.innerHeight/2-217.5+document.documentElement.scrollTop;
+            //var left=window.innerWidth/2-playerbox.clientWidth/2+document.documentElement.scrollLeft;
+            var left=window.innerWidth/2-319+document.documentElement.scrollLeft;
             if(top<0) top=0;
             if(left<0) left=0;
             playerbox.style.top=`${top}px`;
             playerbox.style.left=`${left}px`;
-        },
-        props:['data']
+            console.log(top,left)
+        }
     }
 </script>
 
